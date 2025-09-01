@@ -17,7 +17,6 @@
 * [Depositing veNFTs](getting-started/guides/deposit-venft.md)
 * [Staking iAERO](getting-started/guides/staking-iaero.md)
 * [Providing Liquidity](getting-started/guides/providing-liquidity.md)
-* [Claiming Rewards](getting-started/guides/claiming-rewards.md)
 
 ## Tokenomics
 * [iAERO Token](tokenomics/iaero-token.md)
@@ -32,5 +31,4 @@
 * [Security & Audits](technical/security.md)
 
 ## FAQ
-* [Common Questions](faq/common.md)
 * [Troubleshooting](faq/troubleshooting.md)
