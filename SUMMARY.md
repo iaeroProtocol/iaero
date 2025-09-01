@@ -4,30 +4,32 @@
 
 ## Getting Started
 * [What is iAERO?](getting-started/what-is-iaero.md)
-* [Quick Start Guide](getting-started/quick-start.md)
-* [Key Concepts](getting-started/key-concepts.md)
+* [What is LIQ?](getting-started/what-is-liq.md)
+* [Key Concepts](getting-started/key-concepts-and-how-to.md)
 
 ## Protocol Mechanics
 * [Vault System](protocol/vault-system.md)
 * [veNFT Management](protocol/venft-management.md)
-* [iAERO Token](protocol/iaero-token.md)
-* [LIQ Token & Emissions](protocol/liq-token.md)
+* [Voting Strategy](protocol/voting-strategy.md)
 
 ## User Guides
-* [Depositing AERO](guides/deposit-aero.md)
-* [Depositing veNFTs](guides/deposit-venft.md)
-* [Staking iAERO](guides/staking-iaero.md)
-* [Claiming Rewards](guides/claiming-rewards.md)
-
-## Technical Documentation
-* [Smart Contracts](technical/contracts.md)
-* [Contract Addresses](technical/addresses.md)
-* [Security & Audits](technical/security.md)
+* [Depositing AERO](getting-started/guides/deposit-aero.md)
+* [Depositing veNFTs](getting-started/guides/deposit-venft.md)
+* [Staking iAERO](getting-started/guides/staking-iaero.md)
+* [Providing Liquidity](getting-started/guides/providing-liquidity.md)
+* [Claiming Rewards](getting-started/guides/claiming-rewards.md)
 
 ## Tokenomics
-* [Fee Structure](tokenomics/fees.md)
+* [iAERO Token](tokenomics/iaero-token.md)
+* [LIQ Token Economics](tokenomics/liq-token.md)
 * [Reward Distribution](tokenomics/rewards.md)
-* [LIQ Emissions Schedule](tokenomics/emissions.md)
+* [Vesting Schedule](tokenomics/vesting.md)
+* [Vesting Chart](tokenomics/vesting-chart.md)
+
+## Technical Documentation
+* [Smart Contracts Overview](technical/contracts-overview.md)
+* [Contract Addresses](technical/addresses.md)
+* [Security & Audits](technical/security.md)
 
 ## FAQ
 * [Common Questions](faq/common.md)
