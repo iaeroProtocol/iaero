@@ -7,6 +7,7 @@ The PermalockVault is the core contract that manages all veAERO NFT positions an
 ## Core Components
 
 ### Deposit Management
+
 The vault accepts two types of deposits:
 - **AERO tokens**: Direct deposits that create new veAERO positions
 - **veNFT transfers**: Existing veAERO positions transferred to vault management
@@ -39,6 +40,7 @@ The vault accepts two types of deposits:
 ## Fee Structure
 
 ### Protocol Fee: 5%
+
 Applied on all deposits:
 - User deposits 100 AERO
 - 95 iAERO minted to user
@@ -58,77 +60,80 @@ This fee:
 
 ### Deposit Guards
 
-Owner: Protocol multisig for critical functions
-Authorized: Voting manager and rewards collector
-Keeper: Automated maintenance operations
-Users: Can only deposit, not withdraw
+Prevents accidental NFT transfers:
+- `_expectedNftSender`: Validates sender address
+- `_expectedNftId`: Confirms correct NFT
+- `_expectingNft`: Guards transfer window
+
+Only accepts NFTs during active deposit transactions.
+
+### Access Control
+- **Owner**: Protocol multisig for critical functions
+- **Authorized**: Voting manager and rewards collector
+- **Keeper**: Automated maintenance operations
+- **Users**: Can only deposit, not withdraw
 
 ### Emergency Controls
+- Pause mechanism for deposits
+- Emergency pause for critical issues
+- Sweep functions for stuck tokens (not user deposits)
 
-Pause mechanism for deposits
-Emergency pause for critical issues
-Sweep functions for stuck tokens (not user deposits)
+## Vault Accounting
 
-### Vault Accounting
-Key Metrics Tracked
-
-totalAEROLocked: Sum of all AERO in vault
-totalIAEROMinted: Total iAERO supply issued
-nftLockedAmount[id]: AERO per NFT position
-primaryNFT: Current primary NFT ID
+### Key Metrics Tracked
+- `totalAEROLocked`: Sum of all AERO in vault
+- `totalIAEROMinted`: Total iAERO supply issued
+- `nftLockedAmount[id]`: AERO per NFT position
+- `primaryNFT`: Current primary NFT ID
 
 ### Status Function
+
 Returns comprehensive vault state:
+- Total user deposits
+- Protocol fees collected
+- Primary NFT details
+- Voting power
+- Rebase/merge status
 
-Total user deposits
-Protocol fees collected
-Primary NFT details
-Voting power
-Rebase/merge status
+## Integration Points
 
-### Integration Points
-## With iAERO Token
+### With iAERO Token
+- Vault has exclusive minting rights
+- Mints on deposits only
+- Cannot burn or redeem
 
-Vault has exclusive minting rights
-Mints on deposits only
-Cannot burn or redeem
+### With Voting Manager
+- Executes votes through `executeNFTAction`
+- Maintains vote delegation
+- Claims bribes and fees
 
-## With Voting Manager
+### With Rewards Harvester
+- Sweeps collected rewards
+- Enables reward distribution
+- Maintains treasury flow
 
-Executes votes through executeNFTAction
-Maintains vote delegation
-Claims bribes and fees
+## Operational Flow
 
-## With Rewards Harvester
+1. **User Deposits** → Vault receives AERO/veNFT
+2. **Token Minting** → Issues iAERO and LIQ to user
+3. **Position Management** → Creates/increases veAERO lock
+4. **Maintenance** → Keeper rebases/merges positions
+5. **Voting** → Manager executes optimal votes
+6. **Rewards** → Harvester collects and distributes
 
-Sweeps collected rewards
-Enables reward distribution
-Maintains treasury flow
+## Risk Considerations
 
-### Operational Flow
-
-User Deposits → Vault receives AERO/veNFT
-Token Minting → Issues iAERO and LIQ to user
-Position Management → Creates/increases veAERO lock
-Maintenance → Keeper rebases/merges positions
-Voting → Manager executes optimal votes
-Rewards → Harvester collects and distributes
-
-### Risk Considerations
-## No Redemption Mechanism
-
-Deposits are one-way
-Cannot convert iAERO back to AERO
-Relies on secondary market liquidity
+### No Redemption Mechanism
+- Deposits are one-way
+- Cannot convert iAERO back to AERO
+- Relies on secondary market liquidity
 
 ### Centralization Points
-
-Multisig controls critical functions
-Keeper required for maintenance
-Voting strategy determined by protocol
+- Multisig controls critical functions
+- Keeper required for maintenance
+- Voting strategy determined by protocol
 
 ### Smart Contract Risk
-
-Complex NFT interactions
-Cross-contract dependencies
-Unaudited code (initially)
+- Complex NFT interactions
+- Cross-contract dependencies
+- Unaudited code (initially)
