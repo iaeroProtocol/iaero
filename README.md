@@ -89,3 +89,91 @@ iAERO turns your AERO into a yield-generating, liquid, auto-voting machine. You 
 Stop choosing between liquidity and yields. With iAERO, you're not just staking - you're upgrading to Staking 2.0.
 
 *Disclaimer: No actual cakes were harmed in the making of this protocol. Past performance doesn't guarantee future results, but our robots are pretty good at their job.*
+
+### 🚀 Coming Soon: Next-Level DeFi Composability
+
+#### Staked iAERO Receipt Tokens (stiAERO)
+
+We're launching **stiAERO** - a receipt token for staked iAERO that unlocks a whole new world of capital efficiency.
+
+**What This Means For You:**
+
+🏦 **Borrow Against Your Staking Position**
+- Use stiAERO as collateral in lending markets
+- Access liquidity without unstaking or losing rewards
+- Keep earning while your tokens work as collateral
+
+💰 **Ultimate Capital Efficiency**
+- Stack yields: staking rewards + lending/borrowing strategies
+- Loop strategies: Borrow → Buy more iAERO → Stake → Repeat
+- Never choose between earning and liquidity again
+
+🔄 **Tradeable Staking Positions**
+- Sell your staking position without unstaking
+- Buy pre-staked positions from others
+- Create secondary markets for yield-bearing tokens
+
+📈 **Enhanced Yield Strategies**
+- **Delta-neutral farming**: Borrow stables against stiAERO
+- **Leveraged staking**: Borrow iAERO to increase position
+- **Yield arbitrage**: Borrow when rates < staking APR
+
+🎯 **Real Use Cases**
+- Need quick liquidity? Borrow against stiAERO instead of unstaking
+- Want more exposure? Loop your position for up to 3-5x rewards
+- Market downturn? Borrow stables without selling your stack
+
+**The Power of Composability:**
+
+Your Journey: AERO → iAERO → stiAERO → Collateral → Loan → More Yield
+
+Deposit AERO, get iAERO (liquid)
+Stake iAERO, get stiAERO (still liquid!)
+Use stiAERO as collateral
+Borrow against it
+Still earn full staking rewards
+Use loan for anything you want
+
+**Why This Changes Everything:**
+
+Traditional staking locks your capital in one place. With stiAERO, your capital works in multiple protocols simultaneously:
+- ✅ Earning in iAERO staking
+- ✅ Serving as collateral
+- ✅ Enabling borrowing power
+- ✅ Remaining liquid and tradeable
+
+**Expected Launch**: Q1 2025
+
+**Supported Platforms** (Planned):
+- Native iAERO lending market
+- Sonne Finance integration
+- Other Aerodrome ecosystem lending protocols
+
+This isn't just an upgrade - it's a complete reimagining of what staked assets can do. Get ready to put your iAERO to work in ways you never imagined.
+
+---
+
+### 🔮 Future Roadmap
+
+**Phase 1** (Current)
+- ✅ Core protocol launch
+- ✅ iAERO and LIQ tokens
+- ✅ Automated voting system
+- ✅ Multi-token reward distribution
+
+**Phase 2** (Q4 2025)
+- 🔄 stiAERO receipt tokens
+- 🔄 Lending market integration
+- 🔄 Advanced yield strategies
+
+**Phase 3** (Q1 2026)
+- 🎯 veAERO NFT loans
+- 🎯 Options and derivatives
+- 🎯 Cross-chain expansion
+
+**Phase 4** (Q1 2026)
+- 🌐 Coming to a veNFT near you
+- 🌐 Governance V2
+- 🌐 Protocol-owned liquidity expansion
+
+Stay tuned - the best is yet to come.
