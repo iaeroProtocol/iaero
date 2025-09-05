@@ -28,8 +28,8 @@
 ## Technical Documentation
 * [Smart Contracts Overview](technical/contracts-overview.md)
 * [Contract Addresses](technical/addresses.md)
-* [Security & Audits](technical/AUDIT-PermaLockVault_V5.md)
-* [Security & Audits](technical/AUDIT-VotingManagerOptimised.md)
+* [Audit PermaLock Vault](technical/AUDIT-PermaLockVault_V5.md)
+* [Audit Voting Manager Optimised](technical/AUDIT-VotingManagerOptimised.md)
 
 ## FAQ
 * [Troubleshooting](faq/troubleshooting.md)
