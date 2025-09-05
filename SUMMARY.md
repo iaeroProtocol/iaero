@@ -31,6 +31,7 @@
 * [Audit PermaLock Vault](technical/AUDIT-PermaLockVault_V5.md)
 * [Audit Voting Manager Optimised](technical/AUDIT-VotingManagerOptimised.md)
 * [Audit iAero & LIQ](technical/AUDIT-iAero&LIQ.md)
+* [Audit Rewards Harvester](technical/AUDIT-RewardsHarvester.md)
 
 ## FAQ
 * [Troubleshooting](faq/troubleshooting.md)
