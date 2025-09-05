@@ -30,6 +30,7 @@
 * [Contract Addresses](technical/addresses.md)
 * [Audit PermaLock Vault](technical/AUDIT-PermaLockVault_V5.md)
 * [Audit Voting Manager Optimised](technical/AUDIT-VotingManagerOptimised.md)
+* [Audit iAero & LIQ](technical/AUDIT-iAero&LIQ.md)
 
 ## FAQ
 * [Troubleshooting](faq/troubleshooting.md)
