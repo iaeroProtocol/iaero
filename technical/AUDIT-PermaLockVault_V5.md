@@ -109,4 +109,4 @@ The PermalockVault V5 contract demonstrates robust security practices with all c
 
 ---
 
-*This audit is based on contract version deployed at block height 35139741 and does not cover any subsequent modifications.*
+*This audit is based on contract version deployed at block height 35146801 and does not cover any subsequent modifications.*
