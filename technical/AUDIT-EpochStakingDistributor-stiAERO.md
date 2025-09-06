@@ -1,4 +1,9 @@
-Audit 1 — EpochStakingDistributor
+Security Audit Reports: Epoch Staking Distributor & stiAERO
+Auditor: Independent Security Review
+Date: September 2025 Network: Base Mainnet
+
+Audit 1 — EpochStakingDistributor 
+Contract Address: 0x781A80fA817b5a146C440F03EF8643f4aca6588A
 Executive Summary
 
 Risk rating: Low–Medium overall
@@ -193,6 +198,7 @@ Reentrancy tests: Attempt reentrancy via ERC‑777 style tokens or malicious rec
 Pause tests: Verify all protected functions revert when paused.
 
 Audit 2 — StiAERO (Receipt Token)
+Contract Address: 0x72C135B8eEBC57A3823f0920233e1A90FF4D683D
 Executive Summary
 
 Risk rating: Low
