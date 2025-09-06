@@ -163,3 +163,105 @@ Severity: **C**ritical / **H**igh / **M**edium / **L**ow / **I**nformational
 `RewardsHarvester` is **production-ready** for your split policy (10% protocol, 10% peg, 80% stakers) given the now-deployed **PermalockVault\_V5** sweep authorization and vault allowlists. We found **no exploitable vulnerabilities** in the Harvester. Remaining risks are **operational** (configuration/permissions), which you’ve addressed. With the above test and monitoring recommendations, overall risk is **Low**.
 
 **Final Rating:** **Low Risk** (with operational dependencies documented).
+
+
+## RewardsHarvesterV2 — Function Table
+
+**Purpose:** Claims Aerodrome rewards/fees/rebases to the Vault’s veNFT and routes all incoming rewards to **Protocol / Peg / Stakers** according to fixed BPS splits, delivering staker share to your Distributor.
+
+### Key Constants / Addresses
+
+* `BPS = 10_000`
+* `PROTOCOL_BASE_BPS = 1_000` (10%)
+* `PEG_ACTION_BPS = 1_000` (10%)
+* `vault` *(immutable)*, `AERO`, `iAERO` (read from vault)
+* Configurable: `voter`, `stakingDistributor`, `treasuryDistributor`, `pegDefender`
+
+### External/Public Functions
+
+| Function                    | Signature                                                                                              |           Access |           Guards | Notes                                                                                                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------------------ | ---------------: | ---------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **constructor**             | `(address _vault, address _voter, address _stakingDistributor)`                                        |                — |                — | Sets immutables; reads `AERO/iAERO` from Vault.                                                                                                                              |
+| **setKeeper**               | `(address who, bool allowed)`                                                                          |        **Owner** |                — | Grants keeper rights for harvesting & distribution.                                                                                                                          |
+| **setVoter**                | `(address _voter)`                                                                                     |        **Owner** |                — | Must be Aerodrome **Voter** address; also add as Vault `authorizedTarget`.                                                                                                   |
+| **setStakingDistributor**   | `(address dst)`                                                                                        |        **Owner** |                — | Must be a contract (`dst.code.length > 0`).                                                                                                                                  |
+| **setTreasuryDistributor**  | `(address _distributor)`                                                                               |        **Owner** |                — | Optional; used to route protocol share and optionally split.                                                                                                                 |
+| **setPegDefender**          | `(address _defender)`                                                                                  |        **Owner** |                — | Receiver of peg reserve share; falls back to Vault `treasury` if unset.                                                                                                      |
+| **setRouter**               | `(address _router)`                                                                                    |        **Owner** |                — | Reserved for future peg actions.                                                                                                                                             |
+| **setPairConfig**           | `(address _pair, bool _stable)`                                                                        |        **Owner** |                — | Reserved for future peg actions.                                                                                                                                             |
+| **setBuyThresholdBps**      | `(uint256 _bps)`                                                                                       |        **Owner** |                — | Must be ≤ `BPS`. Reserved for future peg logic.                                                                                                                              |
+| **claimAerodromeRewards**   | `(address[] bribes, address[][] bribeTokens, address[] fees, address[][] feeTokens, address[] gauges)` | **Keeper/Owner** | **nonReentrant** | Calls **Vault.executeNFTAction** on `voter` with the primary veNFT. Requires: Vault authorizes Harvester and `authorizedTarget(voter)=true`.                                 |
+| **processAndDistribute**    | `(address[] tokens)`                                                                                   | **Keeper/Owner** | **nonReentrant** | `Vault.sweepERC20(tokens, this)`; splits: Protocol / Peg / Stakers. Calls `Distributor.notifyRewardAmount` per token; on failure falls back to Treasury/TreasuryDistributor. |
+| **processAndDistributeETH** | `()`                                                                                                   | **Keeper/Owner** | **nonReentrant** | `Vault.sweepETH(this)`; same split; attempts ETH notify on Distributor via `call`.                                                                                           |
+| **receive**                 | `()`                                                                                                   |                — |                — | Accepts ETH.                                                                                                                                                                 |
+
+### Configuration Requirements
+
+* **Vault:**
+
+  * `setRewardsCollector(Harvester)` (and optionally `setAuthorized(Harvester, true)`)
+  * `setAuthorizedTarget(Voter, true)`
+* **Harvester:**
+
+  * `setKeeper(<bot>, true)`
+  * `setStakingDistributor(<Distributor>)`
+  * *(Optional)* `setTreasuryDistributor(<TreasuryDistributor>)`
+  * *(Optional)* `setPegDefender(<address>)`
+
+### Operational Notes
+
+* **Splits:** Protocol(10%) → `TreasuryDistributor` (if set) or `Vault.treasury`; Peg(10%) → `pegDefender` or `Vault.treasury`; Stakers(80%) → Distributor.
+* **Safety:** Uses `forceApprove` (reset to 0 after use). If Distributor reverts, staker share is **safely rerouted** to Treasury/TreasuryDistributor.
+
+---
+
+## VotingManagerOptimised — Function Table
+
+**Purpose:** Bribe intake, oracle‑valued scoring, and execution of Aerodrome votes via the Vault’s veNFT. Handles **refunds** for unused bribes and **treasury collection** for used bribes.
+
+### Core Parameters
+
+* `minBribeUSDPerEpoch` (default `10e18`)
+* `bribeDiscountBPS` (default `10_000`=100%)
+* `maxPoolAllocationBPS` (default `7_000`=70%)
+* `minVoteWeightBPS` (default `5`=0.05%)
+* `refundGraceSeconds` (default 1 day after epoch end)
+
+### Access Control
+
+* **Owner:** pause/unpause, oracles, allowed bribe tokens, keeper set, global params, remove pools, emergency withdraw (restricted).
+* **Keeper:** add pools, set base revenue per epoch, execute votes (auto or manual weights).
+
+### External/Public Functions
+
+| Function                       | Signature                                                                                                                                                                                                                     |           Access |                                   Guards | Notes                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------: | ---------------------------------------: | --------------------------------------------------------------------------------------------------- |
+| **constructor**                | `(address vault, address voter, address treasury)`                                                                                                                                                                            |                — |                                        — | Enables ETH as bribe token by default; still need **ETH oracle**.                                   |
+| **setOracle**                  | `(address token, address feed, uint48 maxStaleSec, bool enabled)`                                                                                                                                                             |        **Owner** |                                        — | For `token=address(0)` configures **ETH/USD**.                                                      |
+| **batchConfigureOracles**      | `(address[] tokens, address[] feeds, uint48[] maxStale, bool[] enabled, bool alsoSetAllowed)`                                                                                                                                 |        **Owner** |                                        — | Optional `alsoSetAllowed` to set `allowedBribeTokens`.                                              |
+| **batchSetAllowedBribeTokens** | `(address[] tokens, bool[] allowed)`                                                                                                                                                                                          |        **Owner** |                                        — | Controls accepted bribe tokens.                                                                     |
+| **setAllowedBribeToken**       | `(address token, bool allowed)`                                                                                                                                                                                               |        **Owner** |                                        — | Single‑token allow/disallow.                                                                        |
+| **getPriceUSD**                | `(address token) → uint256 1e18`                                                                                                                                                                                              |           Public |                                     view | Reverts if oracle missing/stale/bad.                                                                |
+| **getOracleMeta**              | `(address token) → (feed, maxStale, enabled, decimals)`                                                                                                                                                                       |           Public |                                     view | Helper for UI/ops.                                                                                  |
+| **activePoolsSlice**           | `(uint256 start, uint256 max) → address[]`                                                                                                                                                                                    |           Public |                                     view | Paginates active pools.                                                                             |
+| **currentEpochId**             | `() → uint256`                                                                                                                                                                                                                |           Public |                                     view | Epoch start timestamp (aligned).                                                                    |
+| **isEpochStart**               | `(uint256 ts) → bool`                                                                                                                                                                                                         |           Public |                                     view | Epoch alignment helper.                                                                             |
+| **inVotingWindow**             | `() → bool`                                                                                                                                                                                                                   |           Public |                                     view | Uses Aerodrome Voter window.                                                                        |
+| **depositBribe**               | `(address pool, address token, uint256 amount, uint256 epochs)`                                                                                                                                                               |           Public |          **nonReentrant, whenNotPaused** | ERC‑20 path; splits across `epochs` (1–8); each slice must meet `minBribeUSDPerEpoch`.              |
+| **depositETHBribe**            | `(address pool, uint256 epochs)`                                                                                                                                                                                              |           Public | **payable, nonReentrant, whenNotPaused** | Requires ETH oracle to be configured/enabled.                                                       |
+| **claimTreasuryBribes**        | `(address pool, uint256 epochId, uint256 start, uint256 maxCount)`                                                                                                                                                            |           Public |                         **nonReentrant** | Only if `epoch.executed && pool was voted`; transfers slices to Treasury. Chunked.                  |
+| **refundMyBribes**             | `(address pool, uint256 epochId, uint256 start, uint256 maxCount)`                                                                                                                                                            |           Public |                         **nonReentrant** | After `epoch + WEEK + refundGraceSeconds` and if not consumed; refunds caller’s slices.             |
+| **pruneBribes**                | `(address pool, uint256 epochId, uint256 maxScan)`                                                                                                                                                                            |           Public |                         **nonReentrant** | Compacts paid/refunded entries (swap‑and‑pop).                                                      |
+| **executeVotesWithWeights**    | `(address[] pools, uint256[] weightsBps)`                                                                                                                                                                                     | **Keeper/Owner** |          **nonReentrant, whenNotPaused** | Validates weights (min/cap) and exact 10\_000 sum. Resets then votes via Vault.                     |
+| **executeVotesAuto**           | `()`                                                                                                                                                                                                                          | **Keeper/Owner** |          **nonReentrant, whenNotPaused** | Computes proportional weights from **(discounted bribes + base revenue)** with min/cap, then votes. |
+| **addPools**                   | `(address[] pools)`                                                                                                                                                                                                           | **Keeper/Owner** |                                        — | Adds active pools (checks gauge exists & `isAlive`).                                                |
+| **removePool**                 | `(address pool)`                                                                                                                                                                                                              |        **Owner** |                                        — | Removes from active set.                                                                            |
+| **setKeeper**                  | `(address who, bool status)`                                                                                                                                                                                                  |        **Owner** |                                        — | Grants operator rights.                                                                             |
+| **setParams**                  | `(uint256 minBribeUSDPerEpoch, uint256 bribeDiscountBPS, uint256 maxPoolAllocationBPS, uint256 minVoteWeightBPS)`                                                                                                             |        **Owner** |                                        — | Caps: discount ≤ 100%; cap ≤ 100%; min within (0,100%].                                             |
+| **setRefundGrace**             | `(uint256 seconds_)`                                                                                                                                                                                                          |        **Owner** |                                        — | Refund grace after epoch end.                                                                       |
+| **setBaseRevenueForEpoch**     | `(address[] pools, uint256[] epochIds, uint256[] usdAmounts)`                                                                                                                                                                 | **Keeper/Owner** |                                        — | Requires `isEpochStart(epochId)`; stored in USD 1e18.                                               |
+| **pause / unpause**            | `()`                                                                                                                                                                                                                          |        **Owner** |                                        — | Halts bribe deposits and voting (claims/refunds use time guards).                                   |
+| **emergencyWithdraw**          | `(address token, uint256 amount)`                                                                                                                                                                                             |        **Owner** |                         **nonReentrant** | **Forbidden** for ETH and **allowed bribe tokens**. For stranded ops funds only.                    |
+| **view helpers**               | `getActivePools, getPoolInfo, getBribeCount, getBribes, getBribeAt, nextUnpaidBribeIndex, canRefund, nextRefundableBribeIndex, previewClaimTotals, getOptimalAllocation, wasExecuted, canExecuteVotes, getDepositedBribesUSD` |           Public |                                     view | Pagination and state introspection.                                                                 |
+| **receive**                    | `()`                                                                                                                                                                                                                          |                — |                                        — | Accepts ETH bribes.                                                                                 |
+
