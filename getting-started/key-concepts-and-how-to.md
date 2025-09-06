@@ -54,6 +54,7 @@ Don't leave your iAERO idle! Stake it immediately to earn rewards:
 2. Enter your iAERO amount
 3. Confirm staking transaction
 4. Start earning automatically
+5. Receive stiAERO receipt token
 
 ## Understanding the Tokens
 
