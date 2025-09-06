@@ -37,7 +37,8 @@
 * [Audit Voting Manager Optimised](technical/AUDIT-VotingManagerOptimised.md)
 * [Audit iAero & LIQ](technical/AUDIT-iAero\&LIQ.md)
 * [Audit Rewards Harvester](technical/AUDIT-RewardsHarvester.md)
-* [Audit Staking Distributor](technical/AUDIT-StakingDistributor.md)
+* [Audits Epoch Staking Distributor & stiAERO](technical/AUDIT-EpochStakingDistributor-stiAERO.md)
+* 
 
 ## FAQ
 
