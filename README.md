@@ -146,7 +146,7 @@ Traditional staking locks your capital in one place. With stiAERO, your capital 
 
 **Supported Platforms** (Planned):
 - Native iAERO lending market
-- Sonne Finance integration
+- Morpho Finance integration
 - Other Aerodrome ecosystem lending protocols
 
 This isn't just an upgrade - it's a complete reimagining of what staked assets can do. Get ready to put your iAERO to work in ways you never imagined.
@@ -160,14 +160,13 @@ This isn't just an upgrade - it's a complete reimagining of what staked assets c
 - ✅ iAERO and LIQ tokens
 - ✅ Automated voting system
 - ✅ Multi-token reward distribution
+- ✅ stiAERO receipt tokens
 
 **Phase 2** (Q4 2025)
-- 🔄 stiAERO receipt tokens
 - 🔄 Lending market integration
 - 🔄 Advanced yield strategies
 
 **Phase 3** (Q1 2026)
-- 🎯 veAERO NFT loans
 - 🎯 Options and derivatives
 - 🎯 Cross-chain expansion
 
