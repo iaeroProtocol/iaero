@@ -1,7 +1,4 @@
-Here’s your audit as a clean, properly formatted Markdown document.
-**Download:** [Security-Audit-Reports.md](sandbox:/mnt/data/Security-Audit-Reports.md)
 
----
 
 # Security Audit Reports: Epoch Staking Distributor & stiAERO
 
