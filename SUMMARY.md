@@ -8,6 +8,7 @@
 * [What is stiAERO?](getting-started/what-is-stiaero.md)
 * [What is LIQ?](getting-started/what-is-liq.md)
 * [Key Concepts](getting-started/key-concepts-and-how-to.md)
+* [Key Concepts](the-magic-of-iaero.md)
 
 ## Protocol Mechanics
 
