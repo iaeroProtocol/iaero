@@ -19,7 +19,7 @@ iAERO eliminates this trade-off by pooling user deposits into a protocol-managed
 ## Your First Deposit: Step-by-Step
 
 ### Prerequisites
-- AERO tokens in your wallet
+- AERO tokens or veAERO NFT in your wallet
 - ETH for gas fees (Base network)
 - Connected wallet (MetaMask, Rabby, etc.)
 
