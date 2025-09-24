@@ -142,7 +142,7 @@ Traditional staking locks your capital in one place. With stiAERO, your capital 
 - ✅ Enabling borrowing power
 - ✅ Remaining liquid and tradeable
 
-**Expected Launch**: Q1 2025
+**Expected Launch**: Q1 2026
 
 **Supported Platforms** (Planned):
 - Native iAERO lending market
