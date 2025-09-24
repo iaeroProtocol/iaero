@@ -28,7 +28,7 @@ Remember when your parents said you can't have your cake and eat it too? Well, t
 | 📉 Voting power decays | 📈 Vault maintains max lock |
 | 🗓️ Vote every week manually | 🤖 Automated optimal voting |
 | 😴 Miss votes = lose rewards | 💰 Never miss rewards again |
-| 🔧 Rebase every 3 months | ⚙️ Auto-rebasing by keeper |
+| 🔧 Rebase every week | ⚙️ Auto-rebasing by keeper |
 | 🏝️ Can't vote on vacation | 🌴 Earn while you sleep |
 
 ### The Math That Makes You Rich(er)
