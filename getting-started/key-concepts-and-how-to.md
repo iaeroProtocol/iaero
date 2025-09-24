@@ -8,7 +8,7 @@ iAERO eliminates this trade-off by pooling user deposits into a protocol-managed
 
 ## How It Works: The 30-Second Version
 
-1. **You deposit AERO** into the vault
+1. **You deposit veAERO NFTs or AERO** into the vault
 2. **Vault locks it permanently** in veAERO for maximum voting power
 3. **You receive iAERO tokens** (95% of deposit after 5% fee)
 4. **You receive bonus LIQ tokens** (governance/rewards token)
