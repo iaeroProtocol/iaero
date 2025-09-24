@@ -36,7 +36,7 @@ Remember when your parents said you can't have your cake and eat it too? Well, t
 **Solo Locking:** You lock 1000 AERO, vote when you remember, probably miss 30% of epochs because life happens.
 
 **iAERO Chad Move:** 
-- Deposit 1000 AERO → Get 950 iAERO (5% fee)
+- Deposit veNFT with 1000 AERO locked → Get 950 iAERO (5% fee)
 - Earn from 100% of epochs (robots don't sleep)
 - Get bonus LIQ tokens (emissions halve over time - early = good)
 - Your voting power compounds with everyone else's
@@ -64,7 +64,7 @@ Our voting manager doesn't just vote - it votes *optimally*:
 ### Real Talk: Who Is This For?
 
 ✅ **Perfect for:**
-- AERO holders who want voting rewards without the lock
+- veAERO holders who want voting rewards without the lock
 - Degens who can't commit to 4 years of anything
 - Protocols wanting liquid veAERO exposure
 - Anyone who forgets to vote (so, everyone)
@@ -76,7 +76,7 @@ Our voting manager doesn't just vote - it votes *optimally*:
 
 ### The TL;DR
 
-iAERO turns your AERO into a yield-generating, liquid, auto-voting machine. You get the max voting rewards of a 4-year lock without the 4-year lock. The vault does all the work, you collect all the rewards (minus a tiny fee because we need to eat too).
+iAERO turns your veAERO into a yield-generating, liquid, auto-voting machine. You get the max voting rewards of a 4-year lock without the 4-year lock. The vault does all the work, you collect all the rewards (minus a tiny fee because we need to eat too).
 
 ### Quick Links
 - [Launch App](https://iaero.finance) - Start earning now
