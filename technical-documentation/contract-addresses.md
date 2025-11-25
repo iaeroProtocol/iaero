@@ -7,6 +7,9 @@
 - **LIQ**  
   `0x7ee8964160126081cebC443a42482E95e393e6A8`
 
+- **stiAERO**  
+  `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D`
+
 
 ## Treasury
 - **Treasury MultiSig**  
@@ -37,10 +40,6 @@
 
 - **TreasuryDistributor**  
   `0xD36b84EeFd1F481a737595C8212c43A9cD76C8e0`
-
-- **stiAERO**  
-  `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D`
-
 
 ## Aerodrome Integrations
 - **RewardsSugar**  
