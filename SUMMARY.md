@@ -11,6 +11,7 @@
 * [What is LIQ?](getting-started/what-is-liq.md)
 * [Key Concepts](getting-started/key-concepts-and-how-to.md)
 * [Fees & Earnings](getting-started/the-magic-of-iaero.md)
+* [Rewards Harvesting](getting-started/convert-or-compound.md)
 
 ## Protocol Mechanics
 
