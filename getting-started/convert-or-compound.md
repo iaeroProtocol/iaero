@@ -54,6 +54,30 @@ This isn't just a nice-to-have feature—**it's a fundamental reimagining of how
 
 ---
 
+## ⚠️ **Critical: How Token Swapping Works**
+
+> **IMPORTANT:** The "Claim & Convert" and "Sweep Wallet" operations will swap **ALL tokens in your wallet** that are registered in the protocol's token registry—not just newly claimed rewards.
+
+**What gets swapped:**
+- ✅ Newly claimed rewards from the current week
+- ✅ Leftover tokens from previous weeks
+- ✅ Dust amounts you've accumulated
+- ✅ **Any token you're manually holding that's in the registry**
+
+**If you want to HOLD a specific token:**
+You must move it to a different wallet address BEFORE using the swap functions. The protocol cannot distinguish between "rewards I want to swap" and "tokens I'm intentionally holding."
+
+**Example scenario:**
+- You claim 100 AERO as rewards
+- You already have 500 AERO in your wallet from last week that you're saving
+- You click "Claim & Convert to USDC"
+- **Result:** ALL 600 AERO will be swapped to USDC
+
+**Why it works this way:**
+The batch swapper checks your wallet balance for all registered tokens and swaps everything it finds. This is by design—it ensures you never leave dust behind and truly "one-click" converts everything to your target asset.
+
+---
+
 ## The Problem We Solved
 
 When you stake iAERO, you earn rewards from Aerodrome's voting incentives. This is fantastic for yields, but creates an operational challenge:
@@ -97,6 +121,14 @@ Our Reward Swapper automates this entire process with sophisticated on-chain orc
 - No claiming required
 - Useful for accumulated dust or external rewards
 - Converts everything to USDC
+
+**⚠️ Important Note on Token Selection:**
+The system swaps ALL tokens in your wallet that are in the protocol's registry. It does not distinguish between:
+- Rewards you just claimed this week
+- Tokens you've been holding from previous weeks
+- Tokens you acquired externally and deposited to this wallet
+
+If you want to keep certain tokens (e.g., manually managing AERO for other purposes), move them to a different wallet address before clicking "Claim & Convert" or "Sweep Wallet."
 
 ### What Happens Under the Hood:
 
@@ -587,14 +619,18 @@ There's no requirement to swap on any schedule.
 
 **Claim & Convert:**
 1. Claims pending rewards from the distributor contract
-2. Then swaps everything (claimed + wallet balance)
+2. **Then swaps ALL tokens in your wallet** (both newly claimed + any pre-existing holdings)
 3. Use when you have pending rewards to claim
+4. ⚠️ **WARNING**: This will swap ALL tokens in the registry, including tokens you were holding from previous weeks
 
 **Sweep Wallet:**
 1. Only swaps tokens already in your wallet
 2. Doesn't claim anything from distributor
 3. Use for accumulated dust or external rewards
 4. Faster (no claim transaction needed)
+5. Same behavior as "Claim & Convert" regarding which tokens get swapped (ALL tokens in registry)
+
+**Key Point:** Both operations swap ALL tokens found in your wallet that are in the protocol's registry. If you want to hold a specific token (e.g., manually managing your AERO), you must move it to a different wallet address BEFORE using either operation.
 
 ### Q: Why don't other liquid staking protocols have this feature?
 
@@ -635,6 +671,7 @@ But the time savings, convenience, and gas efficiency usually outweigh the poten
 
 For most users, the answer is **yes, this is better**, especially when you factor in your time value.
 
+**One more consideration:** If you're manually managing some tokens (e.g., accumulating AERO to stake elsewhere), you'll need to move them to a separate wallet before using the Reward Swapper. The system doesn't know which tokens you want to keep vs. swap—it treats ALL tokens in your wallet as "rewards to convert."
 ---
 
 ## Tips & Tricks
