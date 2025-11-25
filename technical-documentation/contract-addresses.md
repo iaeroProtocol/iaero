@@ -29,7 +29,7 @@
 - **VotingManager**  
   `0xA0EBbdeD0E201a9C37F4Bffbb831CB8Db9FEd0B8`
 
-- **LIQ Staking Distributor V2**  
+- **LIQ Staking Distributor**  
   `0xb81efc6be6622Bf4086566210a6aD134cd0CDdA4`
 
 - **LIQ Linear Vester**  
