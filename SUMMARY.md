@@ -5,6 +5,7 @@
 ## Getting Started
 
 * [What is iAERO?](getting-started/what-is-iaero.md)
+* [Our Unique Proposition](getting-started/iaero-usps.md)
 * [veAERO Community Alignment](getting-started/why-we-win-together.md)
 * [What is stiAERO?](getting-started/what-is-stiaero.md)
 * [What is LIQ?](getting-started/what-is-liq.md)
