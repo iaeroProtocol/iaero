@@ -7,12 +7,13 @@ Holding iAERO in your wallet earns nothing. Staking it in the StakingDistributor
 ## How to Stake
 
 ### Step 1: Navigate to Staking
-Go to the "Stake iAERO" tab in the app or directly to [iaero.finance/stake](https://iaero.finance/stake)
+Go to the "Stake iAERO" tab in the app at [app.iaero.finance](https://app.iaero.finance)
 
 ### Step 2: Enter Amount
 - Enter the amount of iAERO to stake
 - You can stake any amount, no minimum
 - Use "MAX" button to stake entire balance
+- If you don't yet have iAero, click the green "Buy iAero" button to buy it directly on Aerodrome.
 
 ### Step 3: Approve (First Time Only)
 If this is your first time staking:
