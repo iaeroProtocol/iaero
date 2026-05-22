@@ -41,6 +41,9 @@
 - **TreasuryDistributor**  
   `0xD36b84EeFd1F481a737595C8212c43A9cD76C8e0`
 
+- **Auto-USDC Vault**  
+  `0xFE5c929677D97723dc822C86c93c7e2D1B59c774`
+
 ## Aerodrome Integrations
 - **RewardsSugar**  
   `0xD4aD2EeeB3314d54212A92f4cBBE684195dEfe3E`

@@ -12,6 +12,7 @@
 * [Key Concepts](getting-started/key-concepts-and-how-to.md)
 * [Fees & Earnings](getting-started/the-magic-of-iaero.md)
 * [Rewards Harvesting](getting-started/convert-or-compound.md)
+* [Auto-USDC Vault](getting-started/auto-usdc-vault.md)
 * [Token Sweeper](getting-started/token-sweeper.md)
 
 ## Protocol Mechanics
