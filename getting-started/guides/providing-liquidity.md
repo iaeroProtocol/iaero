@@ -1,5 +1,7 @@
 # Providing Liquidity for iAERO/AERO
 
+> **Aero migration (22 Oct 2026):** iAERO liquidity now lives on Aero, paired with the new AERO (`0x3f5bF3EdAc59d650D8fDf9657a71F2f904A3a4Ee`). The old Aerodrome pools have been drained. See [Aero Migration (22 Oct 2026)](../aero-migration.md).
+
 ## Why Provide Liquidity?
 
 Adding liquidity to the iAERO/AERO pool:
@@ -16,6 +18,10 @@ Adding liquidity to the iAERO/AERO pool:
 - Standard xy=k AMM formula
 - Suitable for correlated but not pegged assets
 
+### Pool Addresses (Aero)
+- **AERO/iAERO v2 (volatile)**: `0x72Decb30DFE4F6Cf7Db3ba1D58411dDda5ed903b`
+- **AERO/iAERO CL (tick spacing 100)**: `0x361D728c97E591Ef47A68CAe2DC5C8ef475608EB`
+
 ### Expected Price Relationship
 - iAERO should trade near 0.85 AERO
 - May trade at premium if high demand
@@ -28,11 +34,11 @@ You need both tokens in the pair:
 - iAERO tokens
 - AERO tokens
 
-**Optimal Ratio**: Check current pool ratio on Aerodrome
+**Optimal Ratio**: Check current pool ratio on Aero
 
-### Step 2: Navigate to Aerodrome
-1. Go to [aerodrome.finance/liquidity](https://aerodrome.finance/liquidity)
-2. Search for "iAERO/AERO" pool
+### Step 2: Navigate to Aero
+1. Go to [app.aero.xyz](https://app.aero.xyz)
+2. Find the iAERO/AERO pool by its address: `0x72Decb30DFE4F6Cf7Db3ba1D58411dDda5ed903b` (v2) or `0x361D728c97E591Ef47A68CAe2DC5C8ef475608EB` (CL)
 3. Click "Add Liquidity"
 
 ### Step 3: Enter Amounts
@@ -60,7 +66,7 @@ You need both tokens in the pair:
 - Transferable and tradeable
 
 ### Staking LP in Gauge
-1. Go to Aerodrome Finance Dashboard
+1. Go to the Aero app ([app.aero.xyz](https://app.aero.xyz))
 2. Find iAERO/AERO position
 3. Stake LP tokens
 4. Earn additional AERO emissions
@@ -132,7 +138,7 @@ Impermanent loss occurs when token prices diverge from deposit ratio.
 ## Advanced Strategies
 
 ### 1. Range Positioning
-If using Slipstream (concentrated liquidity):
+If using the Aero CL pool (concentrated liquidity, tick spacing 100, `0x361D728c97E591Ef47A68CAe2DC5C8ef475608EB`):
 - Set range around 0.80-1.0 AERO per iAERO
 - Tighter range = more fees but more IL risk
 - Monitor and rebalance as needed

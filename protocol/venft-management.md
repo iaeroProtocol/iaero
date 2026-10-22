@@ -1,3 +1,5 @@
+> **Legacy (PermalockVault V5).** This page describes veNFT management in PermalockVault V5 on Aerodrome. On 22 Oct 2026 the protocol's veAERO position was moved out of V5 and converted 1:1 into the permanent Aero stake #1584, and V5 deposits are paused. See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+
 ### Primary NFT Management
 
 **Selection Criteria**

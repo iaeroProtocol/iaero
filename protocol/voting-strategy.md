@@ -1,5 +1,7 @@
 # Voting Strategy: Maximizing Protocol Returns
 
+> **Aero migration (22 Oct 2026).** This page describes voting on Aerodrome gauges with the PermalockVault V5 veNFT. Since 22 Oct 2026 the protocol's stake is the permanent Aero stake #1584, which votes through the Aero Voter (`0x49d7d4f17Ec56Ef8fA04E464AF5D1A4942CC31e6`). See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+
 ## Overview
 
 The iAERO voting strategy optimizes veAERO voting power allocation across Aerodrome gauges to maximize returns for iAERO stakers. Unlike manual voting, our system uses data-driven decisions based on bribes, fees, and strategic value.

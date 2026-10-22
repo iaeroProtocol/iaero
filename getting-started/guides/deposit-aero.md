@@ -1,5 +1,7 @@
 # Depositing AERO
 
+> **Paused during the Aero migration.** Deposits into PermalockVault V5 (AERO and veNFT) are paused, so this flow does not work right now. Staking iAERO, unstaking and claiming rewards work as normal. See [Aero Migration (22 Oct 2026)](../aero-migration.md).
+
 ## Prerequisites
 
 - AERO tokens in your wallet
