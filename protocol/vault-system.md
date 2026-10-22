@@ -1,5 +1,7 @@
 # Vault System Architecture
 
+> **Legacy (PermalockVault V5).** This page describes PermalockVault V5 on Aerodrome. On 22 Oct 2026 the protocol's veAERO position was moved out of V5 and converted 1:1 into the permanent Aero stake #1584, and V5 deposits are paused. See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+
 ## Overview
 
 The PermalockVault is the core contract that manages all veAERO NFT positions and user deposits. It maintains maximum voting power by keeping positions permanently locked while issuing liquid iAERO tokens to users.
@@ -85,6 +87,8 @@ Only accepts NFTs during active deposit transactions.
 - `totalIAEROMinted`: Total iAERO supply issued
 - `nftLockedAmount[id]`: AERO per NFT position
 - `primaryNFT`: Current primary NFT ID
+
+> These are V5's counters. They were not reset when the protocol's veAERO left V5 on 22 Oct 2026, so they no longer show where the protocol's stake is held (Aero stake #1584).
 
 ### Status Function
 

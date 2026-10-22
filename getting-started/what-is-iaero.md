@@ -2,6 +2,8 @@
 
 iAERO is a liquid staking derivative protocol built on top of Aerodrome Finance's veAERO system.
 
+> **Aero migration (22 Oct 2026).** Aero replaced Aerodrome on Base. iAERO's veAERO was converted 1:1 into the permanent Aero stake #1584, and PermalockVault V5 deposits are paused. See [Aero Migration (22 Oct 2026)](aero-migration.md).
+
 ## The Problem
 
 Traditional veAERO locking requires users to choose between:
@@ -21,7 +23,7 @@ iAERO solves this dilemma by:
 
 ### Key Components
 
-- **PermalockVault**: Manages veAERO NFTs and deposits
+- **PermalockVault (V5, legacy)**: Managed veAERO NFTs and deposits until the Aero migration; deposits are paused
 - **iAERO Token**: 1:1 receipt token for AERO deposits (minus fees)
 - **LIQ Token**: Bonus emission token with halving schedule
 - **StakingDistributor**: Handles reward distribution to stakers

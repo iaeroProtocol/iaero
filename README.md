@@ -1,7 +1,9 @@
 # iAERO Documentation
 ## Maximizing veAERO Efficiency Through Permalocked Liquidity
 
-iAERO is a liquid staking protocol for Aerodrome Finance that enables users to maintain liquidity while earning optimised voting rewards through permanently locked veAERO positions.
+> **Aero migration (22 Oct 2026).** Aero replaced Aerodrome on Base. iAERO's veAERO is now the permanent Aero stake #1584, and deposits into PermalockVault V5 are paused. Staking iAERO, unstaking and claiming rewards work as normal. See [Aero Migration (22 Oct 2026)](getting-started/aero-migration.md).
+
+iAERO is a liquid staking protocol for Aero (which replaced Aerodrome Finance on Base) that enables users to maintain liquidity while earning optimised voting rewards through permanently locked veAERO positions.
 
 ### Core Benefits
 
