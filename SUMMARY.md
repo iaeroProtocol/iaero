@@ -11,12 +11,10 @@
 * [What is aXiAERO?](getting-started/what-is-axiaero.md)
 * [Our Unique Proposition](getting-started/iaero-usps.md)
 * [veAERO Community Alignment](getting-started/why-we-win-together.md)
-* [What is stiAERO?](getting-started/what-is-stiaero.md)
 * [What is LIQ?](getting-started/what-is-liq.md)
 * [Key Concepts](getting-started/key-concepts-and-how-to.md)
 * [Fees & Earnings](getting-started/the-magic-of-iaero.md)
 * [Rewards Harvesting](getting-started/convert-or-compound.md)
-* [Auto-USDC Vault](getting-started/auto-usdc-vault.md)
 * [Token Sweeper](getting-started/token-sweeper.md)
 
 ## Protocol Mechanics
@@ -51,6 +49,11 @@
 * [Audit LIQ Staking Distributor](technical/AUDIT-LIQStakingDistributor.md)
 * [Audits Epoch Staking Distributor & stiAERO](technical/AUDIT-EpochStakingDistributor-stiAERO.md)
 * 
+
+## Legacy
+
+* [What is stiAERO? (legacy)](getting-started/what-is-stiaero.md)
+* [Auto-USDC Vault (legacy)](getting-started/auto-usdc-vault.md)
 
 ## FAQ
 

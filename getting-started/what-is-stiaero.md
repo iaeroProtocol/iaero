@@ -1,171 +1,36 @@
-# What is stiAERO?
-## Your Staking Position, Now With Superpowers
+# What is stiAERO? (legacy)
 
-### The One-Liner
-stiAERO is what happens when your staked iAERO decides it's too good for just one job. It's a receipt token that proves you're staking while letting you use that proof as collateral across DeFi.
+> **Legacy.** stiAERO was the receipt for iAERO's previous staking. It receives no new rewards after the 5 November 2026 harvest. iAERO staking now uses [xiAERO](what-is-xiaero.md) (USDC rewards) and [aXiAERO](what-is-axiaero.md) (auto-compounding). To move, follow [Moving from stiAERO or the Auto-USDC Vault](guides/moving-from-stiaero.md).
 
-### The "Why Should I Care" Part
+## What it was
 
-Remember when you had to choose between:
-- Staking for that juicy 25% APY (veAERO yield as of Sep 25)
-- Having liquid funds for other opportunities
-- Using your assets as collateral
+Until November 2026, staking iAERO meant depositing it in the **EpochStakingDistributor**. In return you received **stiAERO**, a transferable ERC-20 receipt, one for each iAERO staked.
 
-With stiAERO, that's like choosing between breathing, eating, and sleeping. Why choose? Do all three.
+- Rewards were paid in the many different tokens iAERO's votes earned, bucketed by weekly epoch.
+- Your share of each week was fixed by your staked balance at the start of that week (Thursday 00:00 UTC).
+- You claimed each token for each week, or used the app's "Claim & convert" to swap them in one flow.
+- To unstake, the matching stiAERO was burned and your iAERO returned.
 
-### How This Magic Works
+## What changed
 
-**The Old World (Boring)**
-```
-Stake iAERO → Locked in staking → Earn rewards → Can't do anything else
-```
+- The **5 November 2026 harvest was the last one** paid into this staking. On 10 November 2026 the stakers' share of each harvest was pointed at the RewardConverter, which funds xiAERO in USDC.
+- Your old stake keeps the iAERO you put in, but **earns nothing new**.
+- **Rewards already funded stay claimable** by the wallet that earned them. Withdrawing your stake does not reduce them.
 
-**The stiAERO World (Galaxy Brain)**
-```
-Stake iAERO → Get stiAERO receipt → Earn rewards → Use as collateral → Borrow → Deploy capital → Still earning → Repeat
-```
+## What to do now
 
-### The Math That Makes Your Accountant Nervous
+1. Open [app.iaero.finance](https://app.iaero.finance) and press **Visit Legacy** (or **Legacy staking & rewards** at the bottom of the page).
+2. Optionally claim your old rewards with **Find my legacy rewards**.
+3. Withdraw your stake with **Manage previous stake** → **Withdraw old iAERO**. You need the matching stiAERO in the same wallet.
+4. Stake the iAERO again on **Stake & claim**, as xiAERO or aXiAERO.
 
-Let's say you have $10,000 worth of iAERO:
+Do not stake new iAERO in the old staking: it is no longer funded.
 
-**Virgin Staker:**
-- Stakes iAERO
-- Earns 25% APY = $2,500/year
-- Capital locked, can't do anything else
-- Total return: 25%
+## Contracts
 
-**Chad stiAERO User:**
-- Stakes iAERO, gets stiAERO
-- Earns 25% APY = $2,500/year
-- Uses stiAERO as collateral
-- Borrows $5,000 stables at 8% APY (Careful about liquidations!!)
-- Deploys borrowed funds at 15% APY
-- Net from borrowing: 7% of $5,000 = $350/year
-- Total return: $2,850/year = 28.5% APY
-- Still has $5,000 liquid to ape into the next big thing
+| Contract | Address (Base) |
+|---|---|
+| stiAERO, "Staked iAERO" | `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D` |
+| EpochStakingDistributor | `0x781A80fA817b5a146C440F03EF8643f4aca6588A` |
 
-### Real Use Cases (Not Financial Advice!)
-
-#### 🏦 **The Leverage Loop Legend**
-- Deposit iAERO, get stiAERO
-- Use stiAERO as collateral
-- Borrow AERO
-- Stake borrowed AERO for more stiAERO
-- Repeat until you're either a genius or need therapy
-- Potential APY: 25% × leverage ratio (handle with care)
-
-#### 💊 **The Stablecoin Pill** (APYs may fluctuate)
-- Your iAERO position: Earning 25% APY
-- Borrow stables at 8% against stiAERO
-- Net profit: 17% on borrowed amount
-- Use stables for real life (boring) or more defi (based)
-- Never sell your stack, never stop earning
-
-#### 🎰 **The Degen Arbitrage**
-- Market dip? Borrow stables against stiAERO
-- Buy the dip without unstaking
-- Market pump? Take profits
-- Pay back loan
-- Keep original position + staking rewards + trading profits
-- Your risk manager hates this one trick
-
-#### 🛡️ **The Protection Play**
-- Worried about short-term volatility?
-- Don't unstake (that's for quitters)
-- Borrow stables as insurance
-- If market dumps: You have dry powder
-- If market pumps: You're still fully exposed
-- Heads you win, tails you win more
-
-### The "But Wait, There's Even More" Section
-
-**🔄 Transferable Yields**
-- Lend your stiAERO to a friend (or enemy)
-- Sell your staking position without unstaking
-- Create yield derivatives (for the real sickos)
-
-**🎯 Protocol Integrations**
-- Use in any protocol that accepts ERC20 collateral
-- Lending markets love stable yield-bearing assets
-- 25% APY backing = Prime collateral
-
-### The Risk Section (Because Legal Makes Us)
-
-⚠️ **Liquidation Risk**: Borrow responsibly or get rekt
-⚠️ **Smart Contract Risk**: Code is law until it isn't
-⚠️ **Rate Risk**: APYs can change faster than your ex's mood
-
-But let's be real - you're already in DeFi. You eat risk for breakfast.
-
-### Why This Changes Everything
-
-Traditional finance: "You can't use the same dollar twice"
-stiAERO: "Hold my beer"
-
-Your iAERO position becomes:
-1. **A yield generator** (25% APY staking)
-2. **Loan collateral** (borrow against it)
-3. **A tradeable asset** (sell the receipt)
-4. **A governance tool** (still counts for voting)
-5. **A flex** ("Yeah, I'm earning while borrowing while earning")
-
-### The Technical Bits (For Nerds)
-
-- **Token Standard**: ERC20 (because we're not monsters)
-- **Minting**: 1:1 with staked iAERO
-- **Burning**: Only on unstake
-- **Transferable**: Yes (this is the whole point)
-- **Supply**: Equals total staked iAERO
-- **Oracle-friendly**: Easy price feeds (staked amount × iAERO price)
-
-### Integration Roadmap
-
-**Wave 1 - Native** (Live Now)
-- ✅ stiAERO minting/burning
-- ✅ Full staking rewards
-- ✅ Transfer functionality
-
-**Wave 2 - Money Markets** (Q1 2026)
-- 🔜 Native iAERO lending pool
-- 🔜 Collateral ratios optimized for 25% APY
-- 🔜 Borrowing against stiAERO
-
-**Wave 3 - Ecosystem** (Q2 2026)
-- 🎯 Sonne Finance integration
-- 🎯 Other Aerodrome lending protocols
-- 🎯 Cross-collateral strategies
-
-**Wave 4 - Galaxy Brain** (Q3 2025)
-- 🧠 stiAERO/iAERO loops
-- 🧠 Structured products
-- 🧠 Options and futures
-- 🧠 We don't even know yet
-
-### The TL;DR
-
-stiAERO turns your staking position into a Swiss Army knife of DeFi possibilities. Stake, earn 25% APY, use as collateral, borrow, deploy, profit. It's not just a receipt token - it's a permission slip to break the rules of capital efficiency.
-
-### FAQ (Frequently Awesome Questions)
-
-**Q: Can I lose my staked iAERO if I get liquidated?**
-A: Only if you borrow and don't manage your position. The stiAERO gets liquidated, not the underlying stake. Don't be a degen (or do, we're not your mom).
-
-**Q: What's the catch?**
-A: You have to be smart enough to use it properly. That's literally it.
-
-**Q: Why would anyone lend against this?**
-A: 25% APY backing = happy lenders. Predictable yield = low risk collateral. Math = your friend.
-
-**Q: Can I do [insert crazy strategy]?**
-A: Probably. If it involves stiAERO generating yield while doing something else, the answer is yes.
-
-### Ready to Transcend?
-
-Stop choosing between staking and liquidity. With stiAERO, you're not just participating in DeFi - you're speedrunning it.
-
-🚀 [Stake Now](app.iaero.finance) 
-
----
-
-*Not financial advice. Side effects of stiAERO may include: excessive yields, capital efficiency addiction, and explaining loop strategies at parties. Please stake responsibly.*
+The audit report for these contracts is at [Audits Epoch Staking Distributor & stiAERO](../technical/AUDIT-EpochStakingDistributor-stiAERO.md).
