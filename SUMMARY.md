@@ -5,7 +5,10 @@
 ## Getting Started
 
 * [Aero Migration (22 Oct 2026)](getting-started/aero-migration.md)
+* [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md)
 * [What is iAERO?](getting-started/what-is-iaero.md)
+* [What is xiAERO?](getting-started/what-is-xiaero.md)
+* [What is aXiAERO?](getting-started/what-is-axiaero.md)
 * [Our Unique Proposition](getting-started/iaero-usps.md)
 * [veAERO Community Alignment](getting-started/why-we-win-together.md)
 * [What is stiAERO?](getting-started/what-is-stiaero.md)
