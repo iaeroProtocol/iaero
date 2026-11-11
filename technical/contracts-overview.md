@@ -40,7 +40,7 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 - Keeper: votes and claims within the limits; cannot move stakes or change settings
 - Depositor: AeroStakeDeposit v2, the only contract besides the Safe that can send stakes in
 
-<!-- OWNER: recovery wording -->
+- Recovery: The vault also has a delayed recovery path, meant for a lost Safe: its two designated recovery keys, acting together (one proposes a replacement Safe, the other confirms), can replace the Safe as the vault's owner, but the replacement can only take over 14 days after the confirmation, and the current Safe can cancel at any time until it does. (`proposeRecovery`, `confirmRecovery`, `acceptRecovery`, `cancelRecovery`; `RECOVERY_DELAY` = 14 days, counted from confirmation)
 
 ### AeroStakeDeposit v2
 **Purpose**: deposit AERO or an Aero stake, receive iAERO and LIQ

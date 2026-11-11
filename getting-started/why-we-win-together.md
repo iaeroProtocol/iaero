@@ -1,6 +1,6 @@
 # iAERO: Aligned with Aerodrome's Vision Through Superior Value Distribution
 
-> **Updated November 2026.** Aero replaced Aerodrome on Base on 22 October 2026, and iAERO's veAERO became the permanent Aero stake #1584 (see [Aero Migration](aero-migration.md)). The revenue split below is unchanged. iAERO stakers are now paid in USDC through [xiAERO](what-is-xiaero.md); stiAERO is legacy, so the stiAERO plans mentioned below are not live.
+> **Updated November 2026.** Aero replaced Aerodrome on Base on 22 October 2026, and iAERO's veAERO became the permanent Aero stake #1584 (see [Aero Migration](aero-migration.md)). The revenue split below is unchanged. iAERO stakers are now paid in USDC through [xiAERO](what-is-xiaero.md); stiAERO is legacy.
 
 ## The 98% Revenue Commitment to veAERO Holders
 
@@ -14,7 +14,6 @@ iAERO demonstrates unprecedented alignment with the Aerodrome ecosystem by direc
 This means veAERO depositors who stake both iAERO and LIQ immediately capture **88% of their original voting income** while gaining:
 - Full liquidity of their position
 - Upside exposure to protocol growth through LIQ
-- Future collateralization opportunities via stiAERO
 - Automated optimal voting across all epochs
 
 ## The Staker's Advantage: Benefiting from Short-Term Sellers
@@ -38,7 +37,7 @@ This mechanism ensures that patient, aligned participants benefit directly from 
 
 3. **Compounding Network Effects**: As iAERO grows, more AERO gets permanently locked, increasing scarcity and value for all veAERO holders - not just iAERO users.
 
-4. **Ecosystem Integration**: stiAERO will enable new DeFi primitives on Aerodrome, from lending markets to leveraged strategies, driving more activity and fees to the protocol.
+4. **Ecosystem Integration**: iAERO is a liquid, transferable token on Base that traders and liquidity providers can use. Borrowing against staked iAERO is not available today.
 
 ## Why This Matters for Aerodrome
 

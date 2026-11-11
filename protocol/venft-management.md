@@ -30,7 +30,7 @@ Users can deposit their own Aero stakes through AeroStakeDeposit v2 (see [Deposi
 | Move out of the vault | Only to the vault's Safe, today the protocol Safe | The Safe |
 | Change the limits or reward addresses | Yes | The Safe |
 
-<!-- OWNER: recovery wording -->
+The vault also has a delayed recovery path for a lost Safe: see [Recovery path](vault-system.md#recovery-path).
 
 ## Voting Across Chains
 

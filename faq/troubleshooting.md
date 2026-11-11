@@ -70,9 +70,9 @@ They cannot be deposited. PermalockVault V5, which accepted them, is retired. Mo
 ### "Wallet mutated or stripped calldata"
 
 **Solution**:
-- Turn off your wallet's transaction simulation or protection feature for this transaction
 - Try MetaMask or Rabby
 - For a multisig, use the Safe Transaction Builder
+- Do not turn off your wallet's security warnings to get past this. If your wallet flags a transaction, check that the contract address matches [Contract Addresses](../technical-documentation/contract-addresses.md) before you sign
 
 ## Approvals
 

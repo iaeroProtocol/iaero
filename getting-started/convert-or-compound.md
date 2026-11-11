@@ -33,7 +33,7 @@ iAERO's main stake, #1584, votes for pools on Aero. Voters earn the trading fees
 ### 2. Collecting
 - **On Base**, the rewards are claimed by the **AeroRewardForwarder v2** (`0x5ceEF9c4D123c0D0b52311403A30cE115d973884`) and passed straight to the RewardsHarvester.
 - **On each other chain**, the rewards are claimed into iAERO's **AeroLeafRewardVault** on that chain (`0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B`, the same address on every chain). They are then sold, and the proceeds are delivered to the RewardsHarvester on Base in USDC.
-- The AeroStakeVault, which holds #1584, only lets rewards be claimed to these addresses. The protocol Safe sets them. <!-- OWNER: leaf reward vault management wording -->
+- The AeroStakeVault, which holds #1584, only lets rewards be claimed to these addresses. The protocol Safe sets them. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base.
 
 ### 3. Splitting
 Every week (Thursday, 00:01 UTC) the **RewardsHarvester** (`0x77f90d2dDB15Ffe28fa322aDA351d11da3B8bFe5`) splits what it has collected. The percentages are fixed in the contract. Where each share goes is set by the protocol Safe, which can change the stakers', TreasuryDistributor and peg-reserve destinations without a delay:
@@ -53,7 +53,7 @@ The **RewardConverter** (`0xA397Ad9f43967b9AE7Ab54E2dDf61CF8c5585bd8`) receives 
 - The protocol Safe decides which tokens the converter handles. It can retire a token at once; from then on the converter refuses it, and the harvester sends the stakers' share of that token to the TreasuryDistributor instead. Any of that token already in the converter can be released to the TreasuryDistributor two days after it was retired. Un-retiring a token, adding a keeper or funder, loosening a token's price rule and switching off the price-reference requirement also wait two days; freezing a token or tightening a rule takes effect at once.
 
 ### 5. Streaming
-- Whenever the converter holds at least 1 USDC, it adds the USDC to the **xiAERO reward stream**.
+- The converter adds the USDC it holds to the **xiAERO reward stream** at three moments: when USDC arrives from the harvester, at the end of every conversion batch, and when the keeper or the Safe calls `push`. It only does so if it holds at least a minimum amount, a setting the Safe can change (1 USDC as of 11 November 2026). If no xiAERO is staked at that moment, the USDC stays in the converter until the next push.
 - Each addition is paid out over the next 3 days, together with anything left of the previous stream. Because tokens can be converted in more than one batch, USDC can be added more than once after a harvest.
 - **xiAERO holders** claim their USDC whenever they like. The **aXiAERO vault** collects its share and the keeper compounds it into more xiAERO.
 

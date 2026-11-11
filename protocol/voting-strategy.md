@@ -39,7 +39,7 @@ Aero lets a stake change its votes on a chain once per cooldown. On Base the coo
 
 ## On-Chain Limits
 
-The AeroStakeVault enforces limits that the protocol Safe sets and can change. The keeper cannot raise them or move the stake. On Base, rewards can only be claimed to the AeroRewardForwarder v2, which passes them to the RewardsHarvester. <!-- OWNER: leaf reward vault management wording --> <!-- OWNER: recovery wording -->
+The AeroStakeVault enforces limits that the protocol Safe sets and can change. The keeper cannot raise them or move the stake. On Base, rewards can only be claimed to the AeroRewardForwarder v2, which passes them to the RewardsHarvester. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base. The vault also has a delayed recovery path for a lost Safe: see [Recovery path](vault-system.md#recovery-path).
 
 | Limit | Setting on 11 November 2026 |
 |---|---|

@@ -103,7 +103,7 @@ It is pooled in iAERO's stakes and voted by the protocol's keeper. See [Voting S
 - **Smart contract risk:** the protocol relies on smart contracts, some of them new. Published audit reports are listed under Technical Documentation.
 - **No redemption:** iAERO cannot be converted back to AERO.
 - **Price risk:** iAERO may trade below the value of the AERO behind it.
-- **Administration:** the protocol Safe, a 3-of-4 multisig, sets the voting limits and administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it. It can also withdraw a stake from the vault. <!-- OWNER: leaf reward vault management wording -->
+- **Administration:** the protocol Safe, a 3-of-4 multisig, sets the voting limits and administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it. It can also withdraw a stake from the vault. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base.
 
 ## Next Steps
 

@@ -1,7 +1,7 @@
 # iAERO Documentation
 ## Permanent AERO stakes. A liquid token. Rewards in USDC.
 
-> **Staking update (November 2026).** iAERO staking now uses [xiAERO](getting-started/what-is-xiaero.md) (claim USDC) and [aXiAERO](getting-started/what-is-axiaero.md) (auto-compounding). The old stiAERO staking and the Auto-USDC Vault received their last rewards from the 5 November 2026 harvest. If you staked before, see [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md).
+> **Staking update (November 2026).** iAERO staking now uses [xiAERO](getting-started/what-is-xiaero.md) (claim USDC) and [aXiAERO](getting-started/what-is-axiaero.md) (auto-compounding). The old stiAERO staking received its last rewards from the 5 November 2026 harvest. The Auto-USDC Vault, which pays one week late, is due to process that final week after the 12 November 2026 harvest. If you staked before, see [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md).
 
 > **Aero migration (22 Oct 2026).** Aero replaced Aerodrome on Base. iAERO's veAERO became the permanent Aero stake #1584. See [Aero Migration (22 Oct 2026)](getting-started/aero-migration.md).
 
@@ -30,7 +30,7 @@ iAERO is a liquid staking protocol for Aero, the exchange on Base that replaced 
 - **iAERO has its own market price,** which can be below or above the price of AERO.
 - **Rewards vary** with what the votes earn each week and with market prices.
 - **Smart contract risk.** Like any DeFi protocol, iAERO relies on smart contracts that can have bugs.
-- **Administration.** The protocol Safe, a 3-of-4 multisig, administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it, and it can withdraw a stake from the AeroStakeVault. What each contract lets it do is set out on that contract's page. <!-- OWNER: leaf reward vault management wording -->
+- **Administration.** The protocol Safe, a 3-of-4 multisig, administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it, and it can withdraw a stake from the AeroStakeVault. What each contract lets it do is set out on that contract's page. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base.
 
 ## Quick links
 

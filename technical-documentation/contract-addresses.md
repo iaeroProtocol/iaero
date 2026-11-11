@@ -58,9 +58,8 @@ All addresses are on Base unless a section says otherwise. Updated 11 November 2
 - **AeroRewardForwarder v2**: claims #1584's Base rewards and forwards them to the RewardsHarvester  
   `0x5ceEF9c4D123c0D0b52311403A30cE115d973884`
 
-- **AeroLeafRewardVault**: receives #1584's rewards on each other chain; they are sold and sent back to the RewardsHarvester on Base. Same address on Ethereum, Optimism, Arbitrum, Robinhood and Ink  
+- **AeroLeafRewardVault**: receives #1584's rewards on each other chain; they are sold and sent back to the RewardsHarvester on Base. Same address on Ethereum, Optimism, Arbitrum, Robinhood and Ink. Managed by the iAERO team  
   `0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B`
-  <!-- OWNER: leaf reward vault management wording -->
 
 - **TreasuryDistributor**: splits its share 80% to LIQ stakers and 20% to the treasury  
   `0xD36b84EeFd1F481a737595C8212c43A9cD76C8e0`

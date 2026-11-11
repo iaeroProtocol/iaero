@@ -23,12 +23,14 @@ The vault holds:
 | **Keeper** | An automated bot run by the protocol | Vote the stakes within the limits, and claim rewards to the fixed reward addresses. It can never move a stake, change a setting or raise a limit |
 | **Depositor** | AeroStakeDeposit v2 | Send users' stakes into the vault |
 
-<!-- OWNER: recovery wording -->
+### Recovery path
+
+The vault also has a delayed recovery path, meant for a lost Safe: its two designated recovery keys, acting together (one proposes a replacement Safe, the other confirms), can replace the Safe as the vault's owner, but the replacement can only take over 14 days after the confirmation, and the current Safe can cancel at any time until it does. Each step is visible on-chain as an event.
 
 ### What protects the stakes
 
 - **The keeper cannot move stakes.** A stake can only leave the vault to the vault's Safe address, today the protocol Safe.
-- **Rewards can only be claimed to fixed addresses**, one per chain, set by the Safe. On Base that address is the AeroRewardForwarder v2, which passes everything to the RewardsHarvester, so the keeper cannot choose where Base rewards go. <!-- OWNER: leaf reward vault management wording -->
+- **Rewards can only be claimed to fixed addresses**, one per chain, set by the Safe. On Base that address is the AeroRewardForwarder v2, which passes everything to the RewardsHarvester, so the keeper cannot choose where Base rewards go. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base.
 - **No upgrades.** The vault has no upgrade path and no generic call function.
 
 **What the Safe can do with a stake.** The stakes are permanent locks on Aero, and the protocol does not plan to unlock them. But the Safe can withdraw any stake from the vault immediately, for example to vote in Aero governance and send it back afterwards. A stake held by the Safe could also be transferred, or changed back to a normal (decaying) lock in Aero and, once that lock ends, withdrawn as AERO.

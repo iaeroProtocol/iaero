@@ -1,6 +1,6 @@
 # Why the “Rake” Favors Long‑Term Stakers (Math & Examples)
 
-> **Updated November 2026.** The split below is unchanged and was read on-chain on 11 November 2026. What changed is how the stakers' 80% reaches you: it is now sold for USDC by the RewardConverter and streamed to [xiAERO](what-is-xiaero.md) holders (or compounded for [aXiAERO](what-is-axiaero.md) holders), instead of being paid in many tokens through the old staking. Staking itself has no fee.
+> **Updated November 2026.** The 80/10/10 split of each harvest and the TreasuryDistributor's 80/20 split below are fixed in the contracts and were read on-chain on 11 November 2026. Two other points on this page are **protocol policy, not contract rules**: that the peg reserve buys only below \$0.85, and that 80% of the protocol's own iAERO staking rewards go to LIQ stakers. The protocol can change its policy. What changed is how the stakers' 80% reaches you: it is now sold for USDC by the RewardConverter and streamed to [xiAERO](what-is-xiaero.md) holders (or compounded for [aXiAERO](what-is-axiaero.md) holders), instead of being paid in many tokens through the old staking. Staking itself has no fee.
 
 Users sometimes ask why the protocol takes a “rake” (deposit fee + weekly splits) and whether that’s extractive.
 This section shows, with formulas and concrete examples, why the design **shifts value from short‑term sellers to long‑term aligned users**, so that people who **stake iAERO** *and* **stake LIQ** can, in many scenarios, **earn more than 100% of a plain veAERO baseline**.
@@ -15,13 +15,13 @@ Let **R** be the total weekly rewards the vault harvests from the veAERO strateg
 * **10% → TreasuryDistributor**
   → **80% of this (8% of R) → LIQ stakers**
   → **20% of this (2% of R) → Protocol operations**.
-* **10% → Peg Defense Reserve** (used only when iAERO trades **below \$0.85** to defend the peg and become buyer of last resort).
+* **10% → Peg Defense Reserve** (protocol policy, not a contract rule: used only when iAERO trades **below \$0.85** to defend the peg and become buyer of last resort).
 
 Additionally, on **deposit**, the protocol mints **5% iAERO** to the treasury (the depositor gets 95%). That 5% is **protocol‑owned iAERO** (POI) which we typically **stake**. As sellers push price below \$0.85, peg defense buys **more** iAERO at a discount, increasing POI.
 
 Apart from this fee and the weekly split above, there are no protocol fees: staking, withdrawing, claiming and compounding are free (you pay network gas, and compounding pays normal swap costs).
 
-**Policy:** The protocol routes **80% of the protocol’s own iAERO staking rewards** to **LIQ stakers** (on top of the 8% base TreasuryDistributor flow).
+**Policy (not a contract rule):** The protocol routes **80% of the protocol’s own iAERO staking rewards** to **LIQ stakers** (on top of the 8% base TreasuryDistributor flow).
 
 > Bottom line: **Sellers fund the protocol’s iAERO stack (via deposit fee + cheap peg buys)** → the protocol **stakes** that iAERO → **80%** of that **staking income** is **re‑routed to LIQ stakers**.
 > If you are *both* an iAERO staker and a LIQ staker, you capture value in both streams.
@@ -35,7 +35,7 @@ Apart from this fee and the weekly split above, there are no protocol fees: stak
 * **y** – your share of the **LIQ staking pool** (0–1).
 * **P** – the **protocol’s share of the iAERO staking pool** (0–1).
   (Grows from the 5% mint on deposits and from peg defense buys below \$0.85.)
-* **Price threshold:** Peg defense *only buys* when iAERO **< \$0.85**.
+* **Price threshold (policy):** Peg defense *only buys* when iAERO **< \$0.85**.
 
 ---
 
@@ -164,7 +164,7 @@ That’s how your **personal** capture can be **>100% of a plain veAERO baseline
   **No.** It depends on **P** (protocol iAERO share), your **x** and **y**, the weekly **R**, and market conditions. When there are few sellers and P stays small, your combined capture may sit near or below 100% of a plain veAERO baseline.
 
 * **Q: Is the peg always defended?**
-  The **peg reserve buys only below \$0.85**. It is **opportunistic**, not a constant market maker.
+  By policy, the **peg reserve buys only below \$0.85**. It is **opportunistic**, not a constant market maker.
 
 * **Q: Why not send 100% to iAERO stakers?**
   The 10% → **TreasuryDistributor** (of which **8%** reaches **LIQ stakers**) and 10% → **Peg Reserve** make the system **antifragile**: sellers subsidize long‑term holders, and there’s capital dedicated to **buying at a discount** when it matters most.

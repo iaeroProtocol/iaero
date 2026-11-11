@@ -1,13 +1,13 @@
 # iAERO Protocol - Unique Selling Propositions
 
-> **Updated November 2026.** iAERO staking now uses [xiAERO](what-is-xiaero.md), which pays stakers in USDC automatically, and [aXiAERO](what-is-axiaero.md), which compounds. stiAERO is legacy: it receives no new rewards after the 5 November 2026 harvest, and no lending integration for it is live. Where this page mentions stiAERO or one-click claiming, it describes the previous staking system. Figures are as of the dates shown.
+> **Updated November 2026.** iAERO staking now uses [xiAERO](what-is-xiaero.md), which pays stakers in USDC automatically, and [aXiAERO](what-is-axiaero.md), which compounds. stiAERO is legacy: it receives no new rewards after the 5 November 2026 harvest, and borrowing against staked iAERO is not available today. Where this page mentions one-click claiming, it describes the previous staking system. Figures are as of the dates shown.
 
 ## Core Tagline
 **"The veAERO Position That Pays You When Others Exit"**
 
 ---
 
-## The 6 Core USPs
+## The 5 Core USPs
 
 ### 1. 🤖 Automated, Optimized Voting
 **Tagline:** *"Set-it-and-forget-it veAERO that never misses a beat"*
@@ -117,30 +117,9 @@ With iAERO:
 
 ---
 
-### 6. 📈 stiAERO - Borrow Against Your Yield
-**Tagline:** *"Stake once, earn twice"*
+### A note on stiAERO
 
-**What it means:**
-- Stake iAERO → Receive stiAERO receipt token
-- Use stiAERO as collateral in lending protocols
-- Keep earning full staking rewards while borrowing
-
-**Current status:**
-- stiAERO is legacy (no new rewards after the 5 November 2026 harvest)
-- No lending integration is live
-
-**User benefit:**
-- Capital efficiency maximized
-- Borrow without unstaking
-- Loop strategies possible (3-5x yield potential)
-- Access liquidity without sacrificing rewards
-
-**Advanced strategies enabled:**
-1. **Leverage loop:** Stake iAERO → Borrow against stiAERO → Buy more iAERO → Repeat
-2. **Delta-neutral:** Borrow stables, hedge position, capture yield spread
-3. **Liquidity access:** Need capital? Borrow instead of selling
-
-**Soundbite:** *"Your staked position just became a yield-generating credit line."*
+stiAERO, the receipt of the previous staking, is legacy: it receives no new rewards after the 5 November 2026 harvest. Borrowing against staked iAERO is not available today. Staking now uses [xiAERO](what-is-xiaero.md) and [aXiAERO](what-is-axiaero.md).
 
 ---
 
@@ -154,7 +133,6 @@ When you hold staked iAERO, you get:
 4. ✅ **LIQ emissions** (bonus token)
 5. ✅ **APR boosts** from seller exits (unique to iAERO)
 6. ✅ **Exit liquidity** whenever you need it
-7. **Borrowing power** via stiAERO (not live; stiAERO is now legacy)
 
 **No other veAERO position offers all of this.**
 
@@ -168,8 +146,8 @@ When you hold staked iAERO, you get:
 | **Voting** | Manual weekly | Automated | Automated + ROI optimized |
 | **Exit Liquidity** | Sell at discount | DEX dependent | Protocol-owned pool |
 | **Seller Impact** | Neutral | Dilutes slightly | **Increases your APR** 🚀 |
-| **Reward Management** | Manual swaps | Varies | One-click USDC/compound |
-| **Leverage** | Not possible | Not available | stiAERO borrowing |
+| **Reward Management** | Manual swaps | Varies | USDC paid automatically, or auto-compound |
+| **Leverage** | Not possible | Not available | Not available today |
 | **Typical APR** | Base rate | ~Base rate | **Base + flywheel boost** |
 
 ---
