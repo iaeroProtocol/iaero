@@ -1,143 +1,95 @@
 # Vault System Architecture
 
-> **Legacy (PermalockVault V5).** This page describes PermalockVault V5 on Aerodrome. On 22 Oct 2026 the protocol's veAERO position was moved out of V5 and converted 1:1 into the permanent Aero stake #1584, and V5 deposits are paused. See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+> **Updated November 2026.** Since 5 November 2026 iAERO's Aero stakes are held by the **AeroStakeVault**, and deposits go through **AeroStakeDeposit v2**. PermalockVault V5, which managed iAERO's veAERO on Aerodrome, is retired: see [Legacy: PermalockVault V5](#legacy-permalockvault-v5) at the end of this page.
 
 ## Overview
 
-The PermalockVault is the core contract that manages all veAERO NFT positions and user deposits. It maintains maximum voting power by keeping positions permanently locked while issuing liquid iAERO tokens to users.
+Two contracts on Base hold and grow iAERO's AERO:
 
-## Core Components
+- **AeroStakeVault** (`0xA21cA21973681bB68A42B8387E86cA7c144D2de2`) holds iAERO's Aero stakes and lets them be voted, but only inside limits the protocol Safe sets.
+- **AeroStakeDeposit v2** (`0xc9B2D05873a3c49a4142a04a2DCBda81aCC2570D`) takes deposits of AERO or Aero stakes, sends them into the vault, and mints iAERO and LIQ.
 
-### Deposit Management
+The vault holds:
+- **#1584**, iAERO's main stake: a permanent Aero stake of 4,853,405.56 AERO as of 11 November 2026. It moved into the vault from the protocol Safe on 5 November 2026.
+- **Stakes deposited by users** through AeroStakeDeposit v2. Each one is permanent.
 
-The vault accepts two types of deposits:
-- **AERO tokens**: Direct deposits that create new veAERO positions
-- **veNFT transfers**: Existing veAERO positions transferred to vault management
+## AeroStakeVault
 
-### NFT Position Structure
+### Roles
 
-**Primary NFT**
-- The main veAERO position that receives all deposits and merges
-- Maintained at maximum lock duration (4 years)
-- Automatically rebased every ~3 months to maintain max lock
-- Holds the majority of voting power
+| Role | Who | What it can do |
+|---|---|---|
+| **Safe** | The protocol Safe, a 3-of-4 multisig (`0x1039CB48254a3150fC604d4B9ea08F66f4739D37`) | Set the voting limits and the reward addresses, appoint the keeper and the depositor, and take a stake back into the Safe |
+| **Keeper** | An automated bot run by the protocol | Vote the stakes within the limits, and claim rewards to the fixed reward addresses. It can never move a stake, change a setting or raise a limit |
+| **Depositor** | AeroStakeDeposit v2 | Send users' stakes into the vault |
 
-**Additional NFTs**
-- Temporary holding state for newly deposited veNFTs
-- Queued for merging into primary position
-- Merged during maintenance operations to minimize gas costs
+### What protects the stakes
 
-### Automated Management
+- **A stake can only leave the vault to the protocol Safe.** There is no other way out, and the keeper cannot move stakes at all.
+- **Rewards can only be claimed to fixed addresses**, one per chain, set by the Safe. The keeper cannot choose where rewards go.
+- **No upgrades.** The vault has no upgrade path and no generic call function.
 
-**Rebase Operations**
-- Checks if lock duration < 3.75 years (4 years - 3 months)
-- Extends lock back to maximum 4 years
-- Maintains optimal voting power without manual intervention
+The Safe can take a stake back out of the vault, for example to vote in Aero governance, and send it back afterwards.
 
-**Merge Operations**
-- Combines multiple NFTs into primary position
-- Reduces management overhead
-- Consolidates voting power for efficiency
+### Limits set on-chain by the Safe
+
+As of 11 November 2026:
+
+| Limit | Setting |
+|---|---|
+| Chains the stakes may vote on | Base, Ethereum, Optimism, Arbitrum, Robinhood, Ink |
+| Share of a stake on any one chain | Anywhere from 0% to 100% on each allowed chain |
+| Cap per pool | None (100%) |
+| Base pools | Only live pools (an activated gauge with a non-zero emission cap) |
+| Reward address on Base | AeroRewardForwarder v2 (`0x5ceEF9c4D123c0D0b52311403A30cE115d973884`) |
+| Reward address on the other five chains | AeroLeafRewardVault (`0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B`) |
+
+The Safe can tighten or loosen these limits. The keeper cannot. See [Voting Strategy](voting-strategy.md) for how the votes are chosen.
+
+## AeroStakeDeposit v2
+
+- **Deposit AERO** (`depositAero`): your AERO is locked into a new permanent Aero stake, which goes straight into the vault.
+- **Deposit a stake** (`depositStake`): your existing Aero stake moves straight from your wallet into the vault. If it is not yet permanent, it is made permanent.
+- **Minting** follows PermalockVault V5's rules and continues V5's LIQ schedule from V5's counter: 95% of the AERO as iAERO to you, 5% as iAERO to the treasury, and a LIQ bonus to you plus 20% of that amount to the treasury.
+- **Limits:** AERO deposits from 1 to 10,000,000 AERO; stake deposits from 5,000 AERO, with no maximum.
+- **Checks before you sign:** the contract can list every reason a deposit would be refused, and the app shows each one with its fix.
+- The contract holds nothing between transactions and has no upgrade path. It has no admin function that mints.
+- The Safe can pause deposits, and can block protocol stake IDs so they can never be deposited for iAERO.
+
+See [Depositing AERO](../getting-started/guides/deposit-aero.md) and [Depositing an Aero stake](../getting-started/guides/deposit-venft.md).
 
 ## Fee Structure
 
-### Protocol Fee: 5%
+### Protocol fee: 5%, on deposits only
 
-Applied on all deposits:
-- User deposits 100 AERO
-- 95 iAERO minted to user
-- 5 iAERO minted to treasury
+- You deposit 100 AERO.
+- 95 iAERO is minted to you.
+- 5 iAERO is minted to the treasury.
 
-This fee:
-- Funds protocol development
-- Provides treasury reserves
-- Aligns long-term incentives
-
-### No Exit Fees
-- No fees for trading iAERO
-- No fees for unstaking
-- No additional performance fees
-
-## Security Features
-
-### Deposit Guards
-
-Prevents accidental NFT transfers:
-- `_expectedNftSender`: Validates sender address
-- `_expectedNftId`: Confirms correct NFT
-- `_expectingNft`: Guards transfer window
-
-Only accepts NFTs during active deposit transactions.
-
-### Access Control
-- **Owner**: Protocol multisig for critical functions
-- **Authorized**: Voting manager and rewards collector
-- **Keeper**: Automated maintenance operations
-- **Users**: Can only deposit, not withdraw
-
-### Emergency Controls
-- Pause mechanism for deposits
-- Emergency pause for critical issues
-- Sweep functions for stuck tokens (not user deposits)
-
-## Vault Accounting
-
-### Key Metrics Tracked
-- `totalAEROLocked`: Sum of all AERO in vault
-- `totalIAEROMinted`: Total iAERO supply issued
-- `nftLockedAmount[id]`: AERO per NFT position
-- `primaryNFT`: Current primary NFT ID
-
-> These are V5's counters. They were not reset when the protocol's veAERO left V5 on 22 Oct 2026, so they no longer show where the protocol's stake is held (Aero stake #1584).
-
-### Status Function
-
-Returns comprehensive vault state:
-- Total user deposits
-- Protocol fees collected
-- Primary NFT details
-- Voting power
-- Rebase/merge status
-
-## Integration Points
-
-### With iAERO Token
-- Vault has exclusive minting rights
-- Mints on deposits only
-- Cannot burn or redeem
-
-### With Voting Manager
-- Executes votes through `executeNFTAction`
-- Maintains vote delegation
-- Claims bribes and fees
-
-### With Rewards Harvester
-- Sweeps collected rewards
-- Enables reward distribution
-- Maintains treasury flow
-
-## Operational Flow
-
-1. **User Deposits** → Vault receives AERO/veNFT
-2. **Token Minting** → Issues iAERO and LIQ to user
-3. **Position Management** → Creates/increases veAERO lock
-4. **Maintenance** → Keeper rebases/merges positions
-5. **Voting** → Manager executes optimal votes
-6. **Rewards** → Harvester collects and distributes
+### No other fees
+- No fee to stake, withdraw, claim or compound.
+- No fee to trade iAERO, beyond the market's own trading fees.
 
 ## Risk Considerations
 
-### No Redemption Mechanism
-- Deposits are one-way
-- Cannot convert iAERO back to AERO
-- Relies on secondary market liquidity
+### No redemption
+- Deposits are one-way. iAERO cannot be converted back to AERO.
+- You exit by selling iAERO, which depends on market liquidity.
 
-### Centralization Points
-- Multisig controls critical functions
-- Keeper required for maintenance
-- Voting strategy determined by protocol
+### Administration
+- The protocol Safe sets the voting limits and reward addresses, can pause deposits, and can take a stake back into the Safe.
+- The keeper decides the votes, within those limits.
 
-### Smart Contract Risk
-- Complex NFT interactions
-- Cross-contract dependencies
-- Unaudited code (initially)
+### Smart contract risk
+- The vault and the deposit contract interact with Aero's contracts on several chains.
+
+## Legacy: PermalockVault V5
+
+PermalockVault V5 (`0x180DAB53968e599Dd43CF431E27CB01AA5C37909`) was iAERO's vault on Aerodrome. It held veAERO NFTs, kept a primary NFT at the maximum 4-year lock with regular re-locks, and merged deposited NFTs into it.
+
+- Its deposits were paused for the Aero migration, and it is now retired.
+- On 22 October 2026 the protocol's veAERO position was moved out of V5 and converted 1:1 into the permanent Aero stake #1584.
+- V5's counters (`totalAEROLocked`, `totalIAEROMinted` and so on) were not reset, so they no longer show where the protocol's stake is held.
+- AeroStakeDeposit v2 continues V5's LIQ halving schedule from V5's final count.
+
+V5's audit report is at [Audit PermaLock Vault](../technical/AUDIT-PermaLockVault_V5.md).
