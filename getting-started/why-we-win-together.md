@@ -1,5 +1,7 @@
 # iAERO: Aligned with Aerodrome's Vision Through Superior Value Distribution
 
+> **Updated November 2026.** Aero replaced Aerodrome on Base on 22 October 2026, and iAERO's veAERO became the permanent Aero stake #1584 (see [Aero Migration](aero-migration.md)). The revenue split below is unchanged. iAERO stakers are now paid in USDC through [xiAERO](what-is-xiaero.md); stiAERO is legacy, so the stiAERO plans mentioned below are not live.
+
 ## The 98% Revenue Commitment to veAERO Holders
 
 iAERO demonstrates unprecedented alignment with the Aerodrome ecosystem by directing **98% of all veAERO revenues back to the community**:

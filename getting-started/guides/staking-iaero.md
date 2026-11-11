@@ -1,137 +1,121 @@
 # Staking iAERO for Rewards
 
+> **Updated November 2026.** Staking now gives you xiAERO (USDC rewards) or aXiAERO (auto-compounding). If you staked before and hold stiAERO, or used the Auto-USDC Vault, see [Moving from stiAERO or the Auto-USDC Vault](moving-from-stiaero.md).
+
 ## Why Stake iAERO?
 
-Holding iAERO in your wallet earns nothing. Staking it in the StakingDistributor earns you 80% of all protocol voting rewards. This includes bribes, fees, and emissions from Aerodrome.
+iAERO in your wallet earns nothing. Staked iAERO earns a share of 80% of all of iAERO's voting rewards, paid in USDC. Those rewards come from the trading fees and incentives that iAERO's Aero stake earns on every chain where it votes.
+
+You can stake in two ways:
+
+| | **Earn USDC** (xiAERO) | **Auto-compound** (aXiAERO) |
+|---|---|---|
+| You receive | xiAERO, 1 for each iAERO | aXiAERO shares |
+| Rewards | USDC you claim | USDC turned into more staked iAERO for you |
+| Learn more | [What is xiAERO?](../what-is-xiaero.md) | [What is aXiAERO?](../what-is-axiaero.md) |
 
 ## How to Stake
 
-### Step 1: Navigate to Staking
-Go to the "Stake iAERO" tab in the app at [app.iaero.finance](https://app.iaero.finance)
+### Step 1: Open Stake & claim
+Go to [app.iaero.finance](https://app.iaero.finance), connect your wallet and switch to Base. **Stake & claim** is the first page.
 
-### Step 2: Enter Amount
-- Enter the amount of iAERO to stake
-- You can stake any amount, no minimum
-- Use "MAX" button to stake entire balance
-- If you don't yet have iAero, click the green "Buy iAero" button to buy it directly on Aerodrome.
+If you don't have iAERO yet, open **Get iAERO** to buy or deposit for it.
 
-### Step 3: Approve (First Time Only)
-If this is your first time staking:
-1. Click "Approve iAERO"
-2. Confirm the approval transaction
-3. Wait for confirmation
+### Step 2: Choose how you earn
+Choose **Earn USDC** or **Auto-compound**.
 
-### Step 4: Stake
-1. Click "Stake iAERO"
-2. Confirm the transaction
-3. Your iAERO is now earning rewards!
+With **Auto-compound**, choose under **Deposit from** whether to use iAERO or xiAERO you already hold.
+
+### Step 3: Enter the amount
+- Enter the amount, or press **Use available balance**.
+- There is no minimum.
+
+### Step 4: Review and confirm
+1. Press **Review stake**. Check the amount, the network (Base) and, for Auto-compound, the maximum USDC you may need to add.
+2. The first time, your wallet asks you to approve the token. The app asks for an unlimited approval, but only the reviewed amount is staked.
+3. Press **Confirm in wallet**.
+
+For Auto-compound from iAERO, there are two transactions: the app stakes your iAERO for xiAERO, then deposits the xiAERO into the compounding vault.
 
 ## Understanding Your Position
 
-### Staking Dashboard Shows:
-- **Your Staked Balance**: Amount of iAERO staked
-- **Pool Share**: Your % of total staked iAERO
-- **Pending Rewards**: Claimable tokens earned
-- **APR**: Current annualized return
+The **Stake & claim** page shows:
+- **Your USDC rewards**: USDC you can claim now (xiAERO only);
+- **USDC stream active** or **No active USDC stream**: whether USDC is being streamed right now;
+- **Your positions**: your xiAERO and aXiAERO balances;
+- **Reserved exit USDC**, if you have redeemed aXiAERO shares and have USDC waiting.
 
-### No Lock Period
-- Unstake anytime with no penalty
-- No cooldown or waiting period
-- Instant liquidity when needed
+**Portfolio** shows all your positions and wallet balances in one place.
 
-## Claiming Rewards
+### No lock period
+- Withdraw at any time, with no penalty and no cooldown.
+- The protocol can pause new stakes, but withdrawals, claims and redemptions stay open.
 
-### Manual Claiming
-1. Click "Claim Rewards"
-2. Select tokens to claim (or claim all)
-3. Confirm transaction
-4. Tokens sent to your wallet
+## Claiming Rewards (xiAERO)
 
-### Reward Tokens Include:
-- AERO (main rewards)
-- USDC (bribe payments)
-- ETH (protocol fees)
-- Various protocol tokens
+1. Press **Claim USDC** in **Your USDC rewards**.
+2. Confirm in your wallet.
 
-### Compounding Strategy
-For maximum returns:
-1. Claim AERO rewards
-2. Deposit AERO back to vault for more iAERO
-3. Stake the new iAERO
-4. Repeat weekly
+Your xiAERO stays staked. There is no deadline to claim.
 
-## Unstaking
+## Withdrawing
 
-### How to Unstake
-1. Go to staking dashboard
-2. Enter amount to unstake
-3. Click "Unstake"
-4. Receive iAERO instantly
+### xiAERO → iAERO
+1. Open **Withdraw & manage**.
+2. Choose **xiAERO → liquid iAERO** and enter the amount (part or all).
+3. Press **Review withdrawal** and confirm.
 
-### Partial Unstaking
-- Unstake any amount up to your balance
-- Remaining balance keeps earning
-- No need to unstake everything
+You get the same amount of iAERO. Unclaimed USDC stays claimable.
+
+### aXiAERO → xiAERO
+1. Open **Withdraw & manage**.
+2. Choose **aXiAERO → xiAERO** and enter the number of shares.
+3. Press **Review share redemption** and confirm.
+
+You get your share of the vault's xiAERO. Any USDC not yet compounded is reserved for you: claim it with **Claim exit USDC**. Then withdraw the xiAERO for iAERO as above.
 
 ## Rewards Math
 
-### How Rewards Are Calculated
+### How xiAERO rewards are calculated
 
-Your share of rewards = (Your Staked iAERO / Total Staked iAERO) × Total Rewards
+Your USDC = (your xiAERO ÷ all xiAERO) × USDC streamed while you hold it.
 
 **Example:**
-- You stake: 1,000 iAERO
-- Total staked: 100,000 iAERO
-- Your share: 1%
-- Weekly rewards: $10,000
-- Your earnings: $100
+- You hold 1,000 xiAERO out of 100,000 in total: 1%.
+- 10,000 USDC is streamed over 3 days.
+- You earn 100 USDC over those 3 days, if you hold your xiAERO the whole time.
 
-### APR Calculation
+Each funding is streamed over 3 days. If you stake halfway through a stream, you earn only from the second half.
 
-APR = (Weekly Rewards × 52) / Total Value Staked × 100
+### APR
 
-## Advanced Strategies
-
-### 1. Auto-Compound LoopAERO → iAERO → Stake → Earn AERO → Repeat
-
-Compounds your position over time
-
-### 2. Diversified Claiming
-- Claim stables (USDC) for expenses
-- Reinvest AERO for growth
-- Hold other tokens for speculation
-
-### 3. Tax Optimization
-- Track cost basis of deposits
-- Consider claiming schedule for tax purposes
-- Keep records of all transactions
+APR = (USDC streamed over a year ÷ value of all staked iAERO) × 100. It changes from week to week with the rewards and with iAERO's price.
 
 ## Common Issues
 
-**"Insufficient balance"**
-- Check you have iAERO in wallet
-- Ensure it's not already staked
+**"Review stake" is disabled**
+- Check that you are on Base and have iAERO (or xiAERO) in your wallet.
+- If an earlier wallet request is still open, finish or dismiss it in **Previous wallet request** first.
 
-**"Transaction failed"**
-- Increase gas limit
-- Check network congestion
-- Ensure sufficient ETH for gas
+**No rewards showing**
+- USDC only accrues while a stream is active. Check the stream status on the page.
+- Rewards are not backdated to before you staked.
+- aXiAERO does not show claimable USDC: it is compounded for you.
 
-**"No rewards showing"**
-- Rewards update after weekly distribution
-- May take 24-48 hours after epoch ends
-- Check if you were staked during earning period
+**Transaction failed**
+- Make sure you have a little ETH on Base for gas.
+- Press **Refresh**, then review again with fresh balances.
 
 ## FAQ
 
-**Q: When do rewards appear?**
-A: After each weekly epoch ends and keepers distribute (usually Thursday/Friday)
+**When does USDC arrive?**
+After each weekly harvest (Thursday, 00:01 UTC) the stakers' share is sold for USDC and added to the stream. Each addition is paid out over the next 3 days. The first funding is planned for 12 November 2026.
 
-**Q: Can I lose my staked iAERO?**
-A: No, staking is non-custodial. Only you can withdraw.
+**Can I lose my staked iAERO?**
+Staking is non-custodial: only you can withdraw your xiAERO, and the protocol cannot take staked iAERO out of the contract. Smart contract risk still applies.
 
-**Q: What's the minimum stake time?**
-A: None! Stake for 1 minute or 1 year, your choice.
+**What's the minimum stake time?**
+None. You earn for exactly the time you hold xiAERO while USDC is streaming.
 
-**Q: Do I earn while unstaking?**
-A: You earn until the moment you unstake.
+**Do I earn while withdrawing?**
+You earn until the moment you withdraw.

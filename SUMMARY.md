@@ -20,13 +20,13 @@
 ## Protocol Mechanics
 
 * [Vault System](protocol/vault-system.md)
-* [veNFT Management](protocol/venft-management.md)
+* [Aero Stake (veNFT) Management](protocol/venft-management.md)
 * [Voting Strategy](protocol/voting-strategy.md)
 
 ## User Guides
 
 * [Depositing AERO](getting-started/guides/deposit-aero.md)
-* [Depositing veNFTs](getting-started/guides/deposit-venft.md)
+* [Depositing an Aero Stake (NFT)](getting-started/guides/deposit-venft.md)
 * [Staking iAERO](getting-started/guides/staking-iaero.md)
 * [Providing Liquidity](getting-started/guides/providing-liquidity.md)
 
@@ -48,7 +48,6 @@
 * [Audit Rewards Harvester](technical/AUDIT-RewardsHarvester.md)
 * [Audit LIQ Staking Distributor](technical/AUDIT-LIQStakingDistributor.md)
 * [Audits Epoch Staking Distributor & stiAERO](technical/AUDIT-EpochStakingDistributor-stiAERO.md)
-* 
 
 ## Legacy
 

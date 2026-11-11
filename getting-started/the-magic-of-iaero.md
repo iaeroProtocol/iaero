@@ -1,5 +1,7 @@
 # Why the “Rake” Favors Long‑Term Stakers (Math & Examples)
 
+> **Updated November 2026.** The split below is unchanged and was read on-chain on 11 November 2026. What changed is how the stakers' 80% reaches you: it is now sold for USDC by the RewardConverter and streamed to [xiAERO](what-is-xiaero.md) holders (or compounded for [aXiAERO](what-is-axiaero.md) holders), instead of being paid in many tokens through the old staking. Staking itself has no fee.
+
 Users sometimes ask why the protocol takes a “rake” (deposit fee + weekly splits) and whether that’s extractive.
 This section shows, with formulas and concrete examples, why the design **shifts value from short‑term sellers to long‑term aligned users**, so that people who **stake iAERO** *and* **stake LIQ** can, in many scenarios, **earn more than 100% of a plain veAERO baseline**.
 
@@ -9,13 +11,15 @@ This section shows, with formulas and concrete examples, why the design **shifts
 
 Let **R** be the total weekly rewards the vault harvests from the veAERO strategy (bribes/fees/gauge rewards), normalized to a common unit (e.g. USD or AERO):
 
-* **80% → iAERO stakers** (via the Staking Distributor).
+* **80% → iAERO stakers** (sold for USDC by the RewardConverter and streamed to xiAERO holders).
 * **10% → TreasuryDistributor**
   → **80% of this (8% of R) → LIQ stakers**
   → **20% of this (2% of R) → Protocol operations**.
 * **10% → Peg Defense Reserve** (used only when iAERO trades **below \$0.85** to defend the peg and become buyer of last resort).
 
 Additionally, on **deposit**, the protocol mints **5% iAERO** to the treasury (the depositor gets 95%). That 5% is **protocol‑owned iAERO** (POI) which we typically **stake**. As sellers push price below \$0.85, peg defense buys **more** iAERO at a discount, increasing POI.
+
+Apart from this fee and the weekly split above, there are no protocol fees: staking, withdrawing, claiming and compounding are free (you pay network gas, and compounding pays normal swap costs).
 
 **Policy:** The protocol routes **80% of the protocol’s own iAERO staking rewards** to **LIQ stakers** (on top of the 8% base TreasuryDistributor flow).
 
@@ -27,7 +31,7 @@ Additionally, on **deposit**, the protocol mints **5% iAERO** to the treasury (t
 ## Notation (What Variables Mean)
 
 * **R** – total weekly harvested rewards (normalized).
-* **x** – your share of the **iAERO staking pool** (0–1).
+* **x** – your share of the **iAERO staking pool**, i.e. of all xiAERO (0–1).
 * **y** – your share of the **LIQ staking pool** (0–1).
 * **P** – the **protocol’s share of the iAERO staking pool** (0–1).
   (Grows from the 5% mint on deposits and from peg defense buys below \$0.85.)

@@ -1,5 +1,7 @@
 # iAERO Protocol - Unique Selling Propositions
 
+> **Updated November 2026.** iAERO staking now uses [xiAERO](what-is-xiaero.md), which pays stakers in USDC automatically, and [aXiAERO](what-is-axiaero.md), which compounds. stiAERO is legacy: it receives no new rewards after the 5 November 2026 harvest, and no lending integration for it is live. Where this page mentions stiAERO or one-click claiming, it describes the previous staking system. Figures are as of the dates shown.
+
 ## Core Tagline
 **"The veAERO Position That Pays You When Others Exit"**
 
@@ -124,8 +126,8 @@ With iAERO:
 - Keep earning full staking rewards while borrowing
 
 **Current status:**
-- ✅ stiAERO is LIVE
-- 🔄 Lending protocol integration coming Q1 2026
+- stiAERO is legacy (no new rewards after the 5 November 2026 harvest)
+- No lending integration is live
 
 **User benefit:**
 - Capital efficiency maximized
@@ -152,7 +154,7 @@ When you hold staked iAERO, you get:
 4. ✅ **LIQ emissions** (bonus token)
 5. ✅ **APR boosts** from seller exits (unique to iAERO)
 6. ✅ **Exit liquidity** whenever you need it
-7. ✅ **Borrowing power** via stiAERO (coming soon)
+7. **Borrowing power** via stiAERO (not live; stiAERO is now legacy)
 
 **No other veAERO position offers all of this.**
 
