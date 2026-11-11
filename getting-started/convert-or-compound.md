@@ -33,10 +33,10 @@ iAERO's main stake, #1584, votes for pools on Aero. Voters earn the trading fees
 ### 2. Collecting
 - **On Base**, the rewards are claimed by the **AeroRewardForwarder v2** (`0x5ceEF9c4D123c0D0b52311403A30cE115d973884`) and passed straight to the RewardsHarvester.
 - **On each other chain**, the rewards are claimed into iAERO's **AeroLeafRewardVault** on that chain (`0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B`, the same address on every chain). They are then sold, and the proceeds are delivered to the RewardsHarvester on Base in USDC.
-- The AeroStakeVault, which holds #1584, only lets rewards be claimed to these addresses. Only the protocol Safe can change them.
+- The AeroStakeVault, which holds #1584, only lets rewards be claimed to these addresses. The protocol Safe sets them. <!-- OWNER: leaf reward vault management wording -->
 
 ### 3. Splitting
-Every week (Thursday, 00:01 UTC) the **RewardsHarvester** (`0x77f90d2dDB15Ffe28fa322aDA351d11da3B8bFe5`) splits what it has collected. The split is fixed in the contract:
+Every week (Thursday, 00:01 UTC) the **RewardsHarvester** (`0x77f90d2dDB15Ffe28fa322aDA351d11da3B8bFe5`) splits what it has collected. The percentages are fixed in the contract. Where each share goes is set by the protocol Safe, which can change the stakers', TreasuryDistributor and peg-reserve destinations without a delay:
 
 | Share | Goes to |
 |---|---|
@@ -48,9 +48,9 @@ Every week (Thursday, 00:01 UTC) the **RewardsHarvester** (`0x77f90d2dDB15Ffe28f
 The **RewardConverter** (`0xA397Ad9f43967b9AE7Ab54E2dDf61CF8c5585bd8`) receives the stakers' 80% in whatever tokens were earned.
 
 - The protocol's keeper sells each token for USDC, in batches of up to 32 tokens, using only swap routes approved in the SwapPolicy contract.
-- Every sale must return at least a minimum worked out on-chain from a price reference for that token (a price feed, or a fixed reference price set by the Safe). If a token has no working price reference, or cannot be sold at that price, it waits in the converter until it can be.
+- Every sale must return at least a minimum worked out on-chain from a price reference for that token (a price feed, or a fixed reference price set by the Safe). If a token has no working price reference, or cannot be sold at that price, it waits in the converter.
 - Stakers are only ever paid in USDC. The converter has no way to pay out the raw tokens.
-- If a token can never be sold, the Safe can retire it. Two days later it can be released to the TreasuryDistributor instead.
+- The protocol Safe decides which tokens the converter handles. It can retire a token at once; from then on the converter refuses it, and the harvester sends the stakers' share of that token to the TreasuryDistributor instead. Any of that token already in the converter can be released to the TreasuryDistributor two days after it was retired. Un-retiring a token, adding a keeper or funder, loosening a token's price rule and switching off the price-reference requirement also wait two days; freezing a token or tightening a rule takes effect at once.
 
 ### 5. Streaming
 - Whenever the converter holds at least 1 USDC, it adds the USDC to the **xiAERO reward stream**.
@@ -66,7 +66,7 @@ The first funding of xiAERO is planned for the weekly harvest on Thursday 12 Nov
 
 ## Legacy rewards from the previous staking
 
-The previous staking (stiAERO) paid rewards in many different tokens, per weekly epoch. Its last funding was the 5 November 2026 harvest. Those rewards stay claimable on the app's **Legacy** page:
+The previous staking (stiAERO) paid rewards in many different tokens, per weekly epoch. Its last funding was the 5 November 2026 harvest. The intent is that those rewards stay claimable on the app's **Legacy** page (the old contracts are administered by the protocol Safe, which can pause them):
 
 1. Press **Visit Legacy**, then **Find my legacy rewards**.
 2. Press **Find all funded reward weeks** to load every week with rewards.

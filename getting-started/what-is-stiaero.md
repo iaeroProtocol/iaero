@@ -14,8 +14,9 @@ Until November 2026, staking iAERO meant depositing it in the **EpochStakingDist
 ## What changed
 
 - The **5 November 2026 harvest was the last one** paid into this staking. On 10 November 2026 the stakers' share of each harvest was pointed at the RewardConverter, which funds xiAERO in USDC.
-- Your old stake keeps the iAERO you put in, but **earns nothing new**.
-- **Rewards already funded stay claimable** by the wallet that earned them. Withdrawing your stake does not reduce them.
+- Your old stake still holds the iAERO you put in, but **earns nothing new**.
+- The intent is that **rewards already funded stay claimable** by the wallet that earned them, and nothing is planned to stop that. Withdrawing your stake does not reduce them.
+- The EpochStakingDistributor and stiAERO are administered by the protocol Safe, which can pause the old staking, including withdrawals and claims. No pause is planned, but we recommend moving soon.
 
 ## What to do now
 

@@ -32,7 +32,7 @@ This mechanism ensures that patient, aligned participants benefit directly from 
 
 ### Critical commitments to Aerodrome:
 
-1. **Irreversible Lock**: All veAERO locked in iAERO vaults will **NEVER** be unlocked or sold. This permanently removes sell pressure and strengthens the entire veAERO ecosystem.
+1. **Permanent Lock**: AERO deposited with iAERO is held in permanent locks, and the protocol does not plan to unlock or sell it. This removes sell pressure and strengthens the entire veAERO ecosystem. (The protocol Safe can withdraw a stake from the vault: see [Vault System](../protocol/vault-system.md).)
 
 2. **Optimal Voting Execution**: Our automated system ensures 100% voting participation with mathematically optimized bribe capture, maximizing value for the Aerodrome ecosystem.
 

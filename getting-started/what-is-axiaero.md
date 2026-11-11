@@ -73,7 +73,7 @@ Redeeming works even when the vault is paused, and does not depend on any price.
 
 aXiAERO is not an ERC-4626 vault, and 1 aXiAERO is not always 1 xiAERO or 1 iAERO. Always use the app's preview, or the contract's `previewRedeem`, to see what a share is worth.
 
-## What the protocol can and cannot do
+## What aXiAERO's owner can and cannot do
 
 aXiAERO's owner is the protocol Safe, a 3-of-4 multisig (`0x1039CB48254a3150fC604d4B9ea08F66f4739D37`).
 
@@ -83,11 +83,13 @@ The owner **can**:
 - approve swap routes in the SwapPolicy contract. A new route only takes effect after a 2-day wait; removing one is immediate;
 - return other tokens that were sent to the vault by mistake.
 
-The owner **cannot**:
+Through the aXiAERO contract, the owner **cannot**:
 - take the vault's xiAERO or USDC, or aXiAERO;
 - create shares without a deposit;
 - loosen the 2% loss limit on compounding, which is fixed in the contract;
 - upgrade the contract. It has no upgrade mechanism.
+
+The protocol Safe (a 3-of-4 multisig) administers the iAERO token, including who may mint and burn it. Those token-level powers sit outside aXiAERO's own rules above.
 
 ## Contracts
 

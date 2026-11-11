@@ -17,7 +17,7 @@ You can check all of this on-chain: `ownerOf(1584)` on the VotingEscrow returns 
 Users can deposit their own Aero stakes through AeroStakeDeposit v2 (see [Depositing an Aero stake](../getting-started/guides/deposit-venft.md)):
 - each deposited stake must hold at least 5,000 AERO;
 - it is made permanent if it was not already;
-- it is held in the AeroStakeVault next to #1584, permanently locked.
+- it is held in the AeroStakeVault next to #1584, as a permanent lock.
 
 ## What Can Happen to a Stake in the Vault
 
@@ -26,9 +26,11 @@ Users can deposit their own Aero stakes through AeroStakeDeposit v2 (see [Deposi
 | Vote on Aero pools | Yes | The keeper, within the Safe's on-chain limits |
 | Claim rewards | Yes | To the fixed reward address for each chain only |
 | Withdraw to a user | No | Deposits are one-way |
-| Unlock the AERO | No | The stakes are permanent |
-| Move out of the vault | Only to the protocol Safe | The Safe |
-| Change the limits or reward addresses | Yes | The Safe only |
+| Unlock the AERO | Not planned | The stakes are permanent locks and the vault cannot unlock them. A stake the Safe has withdrawn could be transferred, or changed back to a normal (decaying) lock in Aero |
+| Move out of the vault | Only to the vault's Safe, today the protocol Safe | The Safe |
+| Change the limits or reward addresses | Yes | The Safe |
+
+<!-- OWNER: recovery wording -->
 
 ## Voting Across Chains
 

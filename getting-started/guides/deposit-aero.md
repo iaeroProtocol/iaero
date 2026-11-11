@@ -2,7 +2,7 @@
 
 > **Deposits are open.** Since 5 November 2026, deposits go through the **AeroStakeDeposit v2** contract (`0xc9B2D05873a3c49a4142a04a2DCBda81aCC2570D`). The old PermalockVault V5 is retired. See [Aero Migration (22 Oct 2026)](../aero-migration.md).
 
-Depositing AERO locks it permanently in iAERO's Aero stakes and gives you liquid iAERO, plus a bonus in LIQ.
+Depositing AERO adds it to iAERO's Aero stakes, which are permanent locks on Aero, and gives you liquid iAERO, plus a bonus in LIQ.
 
 ## What You Get
 

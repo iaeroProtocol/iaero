@@ -18,7 +18,7 @@ xiAERO replaced stiAERO as iAERO's staking token in November 2026. If you still 
 2. 80% of each harvest is the stakers' share. It goes to the **RewardConverter**.
 3. The RewardConverter sells those reward tokens for USDC and adds the USDC to xiAERO's reward stream.
 
-Stakers only ever receive USDC. A token that cannot yet be sold at a fair price waits in the converter until it can. See [Rewards Harvesting](convert-or-compound.md) for the full flow.
+Stakers only ever receive USDC. A token that cannot yet be sold at a fair price waits in the converter. The protocol Safe decides which tokens the converter handles and where each share of the harvest goes. See [Rewards Harvesting](convert-or-compound.md) for the full flow.
 
 ## How the stream works
 
@@ -61,7 +61,7 @@ You get the same amount of iAERO back. Withdrawing does not claim your USDC: it 
 - If you send xiAERO to a smart contract, that contract earns the USDC, and only that contract can claim it.
 - There is no setting that sends your rewards somewhere else. Each claim pays the wallet that earned the USDC, or an address that wallet chooses when it claims.
 
-## What the protocol can and cannot do
+## What xiAERO's owner can and cannot do
 
 xiAERO's owner is the protocol Safe, a 3-of-4 multisig (`0x1039CB48254a3150fC604d4B9ea08F66f4739D37`).
 
@@ -71,10 +71,12 @@ The owner **can**:
 - change the length of future streams, between 1 and 30 days, but only after the current stream has ended;
 - return other tokens that were sent to the contract by mistake.
 
-The owner **cannot**:
+Through the xiAERO contract, the owner **cannot**:
 - take staked iAERO, unclaimed USDC or xiAERO out of the contract;
 - create xiAERO without iAERO behind it;
 - upgrade the contract. It has no upgrade mechanism.
+
+The protocol Safe (a 3-of-4 multisig) administers the iAERO token, including who may mint and burn it. Those token-level powers sit outside xiAERO's own rules above.
 
 ## xiAERO and the old stiAERO
 

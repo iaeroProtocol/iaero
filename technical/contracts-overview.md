@@ -5,13 +5,14 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 ## Tokens
 
 ### iAERO
-**Purpose**: liquid token for AERO locked permanently by the protocol
+**Purpose**: liquid token minted for AERO deposited into the protocol's permanent Aero stakes
 
 **Features**:
 - ERC-20 with Permit, 18 decimals
 - Minted by the deposit contract (AeroStakeDeposit v2 today; PermalockVault V5 before the Aero migration)
 - 95% of each deposit to the depositor, 5% to the treasury
 - Transferable and tradeable; not redeemable for AERO
+- Roles: the protocol Safe holds the admin role, which decides who holds `MINTER_ROLE` and `BURNER_ROLE` (`burnFrom` needs only `BURNER_ROLE`)
 
 ### LIQ
 **Purpose**: bonus and governance token
@@ -31,13 +32,15 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 - `allocate`, `allocateChains`, `allocateGauges`: vote a held stake (keeper only, checked against `chainLimits` and `gaugeCapBps`)
 - `claimRewards`: claim a stake's rewards, only to `rewardRecipient(chainId)` (keeper only)
 - `setChainLimits`, `setGlobalLimits`, `setRewardRecipient`, `setKeeper`, `setDepositor`: Safe only
-- `rescueNFT`: return a stake to the Safe (Safe only; the only way a stake leaves the vault)
+- `rescueNFT`: send any stake, #1584 included, to the Safe at once (Safe only; the only function that moves a stake out of the vault). Once held by the Safe, a stake can be transferred or downgraded from permanent on Aero's VotingEscrow
 - `heldTokenIds`, `isHeld`, `chainLimits`, `rewardRecipient`: views
 
 **Permissions**:
 - Safe: the protocol Safe (3-of-4 multisig)
 - Keeper: votes and claims within the limits; cannot move stakes or change settings
 - Depositor: AeroStakeDeposit v2, the only contract besides the Safe that can send stakes in
+
+<!-- OWNER: recovery wording -->
 
 ### AeroStakeDeposit v2
 **Purpose**: deposit AERO or an Aero stake, receive iAERO and LIQ
@@ -67,7 +70,7 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 **Mechanism**:
 - Synthetix-style reward stream; each funding paid out over `rewardsDuration` (3 days)
 - Transfers settle both accounts first: earned USDC stays with the earner
-- Owner (Safe) can pause new stakes, set notifiers, set future stream length (1 to 30 days); cannot remove iAERO, USDC or xiAERO
+- Owner (Safe) can pause new stakes, set notifiers, set future stream length (1 to 30 days); xiAERO's `recoverERC20` cannot remove iAERO, USDC or xiAERO. The iAERO token's own roles (above) are separate
 
 ### CompoundingVault (aXiAERO)
 **Purpose**: auto-compounding shares of xiAERO
@@ -87,7 +90,7 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 - `convert(swaps)`: keeper only; up to 32 swaps per call, each with an on-chain minimum from the token's price reference
 - `push`: send the USDC to xiAERO
 
-**Notes**: no raw-token payout to users; tokens that cannot be sold wait in the converter; changes that loosen its settings wait 2 days.
+**Notes**: no raw-token payout to users; tokens that cannot be sold wait in the converter. Immediate (Safe): `setRetired(token, true)` (the harvester then sends the stakers' share of that token to the TreasuryDistributor), `setFrozen`, a tightening `setRule`, `setMinPushUSDC`, `pause`. After a 2-day queue: adding a keeper or funder, any other `setRule`, `setRequireOracle(false)`, un-retiring. `releaseRetired` sends retired tokens already held to the TreasuryDistributor 2 days after retirement.
 
 ### SwapPolicy, PairPriceOracle, AeroIAEROChainlinkFreshTwapFeed
 - **SwapPolicy**: the swap routes the converter and the compounding vault may call. New routes wait 2 days; removal is immediate.
@@ -103,6 +106,8 @@ All contracts are on Base unless stated. Addresses are on [Contract Addresses](.
 - 80% → stakers (`stakingDistributor` = the RewardConverter)
 - 10% → TreasuryDistributor
 - 10% → peg reserve
+
+The percentages are constants. The destinations are not: the Safe can change them at once with `setStakingDistributor`, `setTreasuryDistributor` and `setPegDefender`, and can move tokens held by the harvester with `rescueTokens`.
 
 ### TreasuryDistributor
 **Purpose**: split the treasury's share between LIQ stakers and operations
@@ -140,5 +145,5 @@ User ── AERO or stake ──► AeroStakeDeposit v2 ── stake ──► A
 
 - **PermalockVault V5**: managed veAERO NFTs on Aerodrome (`deposit`, `depositVeNFT`, `executeNFTAction`, `performMaintenance`). Retired; deposits paused.
 - **VotingManager**: voted V5's veNFT on Aerodrome. Retired.
-- **EpochStakingDistributor and stiAERO**: the previous iAERO staking, with rewards per token and weekly epoch. No new funding after the 5 November 2026 harvest; withdrawals and claims of funded rewards remain.
+- **EpochStakingDistributor and stiAERO**: the previous iAERO staking, with rewards per token and weekly epoch. No new funding after the 5 November 2026 harvest. Withdrawals and claims of funded rewards are intended to stay open; the distributor is owned by the Safe, and its `unstake`, `exit` and claim functions stop while it is paused.
 - **iAERO Auto-USDC Vault**: deposited into the previous staking and paid USDC one week late. Its final week is due to be processed after the 12 November 2026 harvest.

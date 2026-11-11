@@ -19,17 +19,19 @@ The vault holds:
 
 | Role | Who | What it can do |
 |---|---|---|
-| **Safe** | The protocol Safe, a 3-of-4 multisig (`0x1039CB48254a3150fC604d4B9ea08F66f4739D37`) | Set the voting limits and the reward addresses, appoint the keeper and the depositor, and take a stake back into the Safe |
+| **Safe** | The protocol Safe, a 3-of-4 multisig (`0x1039CB48254a3150fC604d4B9ea08F66f4739D37`) | Set the voting limits and the reward addresses, appoint the keeper and the depositor, and withdraw any stake (including #1584) into the Safe at once |
 | **Keeper** | An automated bot run by the protocol | Vote the stakes within the limits, and claim rewards to the fixed reward addresses. It can never move a stake, change a setting or raise a limit |
 | **Depositor** | AeroStakeDeposit v2 | Send users' stakes into the vault |
 
+<!-- OWNER: recovery wording -->
+
 ### What protects the stakes
 
-- **A stake can only leave the vault to the protocol Safe.** There is no other way out, and the keeper cannot move stakes at all.
-- **Rewards can only be claimed to fixed addresses**, one per chain, set by the Safe. The keeper cannot choose where rewards go.
+- **The keeper cannot move stakes.** A stake can only leave the vault to the vault's Safe address, today the protocol Safe.
+- **Rewards can only be claimed to fixed addresses**, one per chain, set by the Safe. On Base that address is the AeroRewardForwarder v2, which passes everything to the RewardsHarvester, so the keeper cannot choose where Base rewards go. <!-- OWNER: leaf reward vault management wording -->
 - **No upgrades.** The vault has no upgrade path and no generic call function.
 
-The Safe can take a stake back out of the vault, for example to vote in Aero governance, and send it back afterwards.
+**What the Safe can do with a stake.** The stakes are permanent locks on Aero, and the protocol does not plan to unlock them. But the Safe can withdraw any stake from the vault immediately, for example to vote in Aero governance and send it back afterwards. A stake held by the Safe could also be transferred, or changed back to a normal (decaying) lock in Aero and, once that lock ends, withdrawn as AERO.
 
 ### Limits set on-chain by the Safe
 
@@ -77,7 +79,7 @@ See [Depositing AERO](../getting-started/guides/deposit-aero.md) and [Depositing
 - You exit by selling iAERO, which depends on market liquidity.
 
 ### Administration
-- The protocol Safe sets the voting limits and reward addresses, can pause deposits, and can take a stake back into the Safe.
+- The protocol Safe sets the voting limits and reward addresses, can pause deposits, and can withdraw any stake from the vault into the Safe.
 - The keeper decides the votes, within those limits.
 
 ### Smart contract risk

@@ -10,7 +10,7 @@
 
 ## Distribution Flow
 
-The RewardsHarvester splits every weekly harvest. The percentages are fixed in the contracts and were read on-chain on 11 November 2026:
+The RewardsHarvester splits every weekly harvest. The percentages are fixed in the contracts (read on-chain on 11 November 2026). Where each share goes is set by the protocol Safe, and the Safe decides which tokens the RewardConverter handles: if it retires a token, the stakers' share of that token goes to the TreasuryDistributor instead.
 
 ```
 Weekly harvest (RewardsHarvester)
@@ -40,6 +40,6 @@ LIQ stakers receive their share through the LIQ Staking Distributor, in the toke
 
 ## Rewards From Before November 2026
 
-The previous staking (stiAERO) and the Auto-USDC Vault paid rewards differently. Their last funding was the 5 November 2026 harvest, and rewards already funded stay claimable on the app's Legacy page. See [Moving from stiAERO or the Auto-USDC Vault](../getting-started/guides/moving-from-stiaero.md).
+The previous staking (stiAERO) and the Auto-USDC Vault paid rewards differently. Their last funding was the 5 November 2026 harvest. The intent is that rewards already funded stay claimable on the app's Legacy page; those contracts are administered by the protocol Safe, which can pause them. See [Moving from stiAERO or the Auto-USDC Vault](../getting-started/guides/moving-from-stiaero.md).
 
 More detail on each step: [Rewards Harvesting](../getting-started/convert-or-compound.md).

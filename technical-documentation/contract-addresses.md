@@ -17,7 +17,7 @@ All addresses are on Base unless a section says otherwise. Updated 11 November 2
 
 
 ## Treasury
-- **Protocol Safe / Treasury MultiSig** (3-of-4; owns or administers the contracts below)  
+- **Protocol Safe / Treasury MultiSig** (3-of-4; owns or administers iAERO's Base contracts below, including the iAERO token's mint and burn roles)  
   `0x1039CB48254a3150fC604d4B9ea08F66f4739D37`
 
 
@@ -60,6 +60,7 @@ All addresses are on Base unless a section says otherwise. Updated 11 November 2
 
 - **AeroLeafRewardVault**: receives #1584's rewards on each other chain; they are sold and sent back to the RewardsHarvester on Base. Same address on Ethereum, Optimism, Arbitrum, Robinhood and Ink  
   `0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B`
+  <!-- OWNER: leaf reward vault management wording -->
 
 - **TreasuryDistributor**: splits its share 80% to LIQ stakers and 20% to the treasury  
   `0xD36b84EeFd1F481a737595C8212c43A9cD76C8e0`
@@ -115,7 +116,7 @@ The old Aerodrome pools have been drained.
 ## Legacy / Retired
 
 ### Previous staking (no new rewards after the 5 November 2026 harvest)
-Holders can still withdraw and claim rewards already funded. See [Moving from stiAERO or the Auto-USDC Vault](../getting-started/guides/moving-from-stiaero.md).
+The intent is that holders can still withdraw and claim rewards already funded. These contracts are administered by the protocol Safe, which can pause them. See [Moving from stiAERO or the Auto-USDC Vault](../getting-started/guides/moving-from-stiaero.md).
 
 - **stiAERO** (receipt for the previous staking)  
   `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D`

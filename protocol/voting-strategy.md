@@ -39,7 +39,7 @@ Aero lets a stake change its votes on a chain once per cooldown. On Base the coo
 
 ## On-Chain Limits
 
-The AeroStakeVault enforces limits that only the protocol Safe can change. The keeper cannot raise them, move the stake or choose where rewards go.
+The AeroStakeVault enforces limits that the protocol Safe sets and can change. The keeper cannot raise them or move the stake. On Base, rewards can only be claimed to the AeroRewardForwarder v2, which passes them to the RewardsHarvester. <!-- OWNER: leaf reward vault management wording --> <!-- OWNER: recovery wording -->
 
 | Limit | Setting on 11 November 2026 |
 |---|---|

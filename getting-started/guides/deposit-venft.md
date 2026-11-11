@@ -47,7 +47,7 @@ After a fresh check, press **Confirm deposit in wallet**. The stake moves straig
 - **One-way:** a deposited stake cannot be returned. To exit, sell iAERO on the market.
 - **Your whole stake is deposited.** There are no partial stake deposits.
 - **iAERO's stake #1584 itself** can never be deposited.
-- Deposited stakes are held in the AeroStakeVault, permanently locked, alongside #1584.
+- Deposited stakes are held in the AeroStakeVault as permanent locks, alongside #1584. The protocol does not plan to unlock them, but the protocol Safe can withdraw a stake from the vault (see [Vault System](../../protocol/vault-system.md)).
 
 ## Troubleshooting
 

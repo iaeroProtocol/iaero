@@ -45,7 +45,7 @@ A token may be awaiting processing, or have no current price or swap route. Unav
 
 ### My Auto-USDC Vault USDC for the last week is missing
 
-The vault pays one week late. Its final week, funded by the 5 November 2026 harvest, is due to be processed after the 12 November 2026 harvest. Claim it after that with **Claim old AutoVault USDC**.
+The vault pays one week late. Its final week, funded by the 5 November 2026 harvest, is due to be processed after the 12 November 2026 harvest. Once that processing has run, claim it with **Claim old AutoVault USDC**.
 
 ## Deposits
 

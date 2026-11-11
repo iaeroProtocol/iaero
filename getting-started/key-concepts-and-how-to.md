@@ -9,7 +9,7 @@ iAERO pools deposits into permanent, protocol-managed Aero stakes and gives you 
 ## How It Works: The 30-Second Version
 
 1. **Get iAERO.** Deposit AERO or an Aero stake (you get 95% as iAERO, plus a LIQ bonus), or buy iAERO on the market.
-2. **The AERO is locked permanently** in iAERO's Aero stakes, held by the AeroStakeVault.
+2. **The AERO goes into iAERO's Aero stakes**, which are permanent locks on Aero, held by the AeroStakeVault. The protocol does not plan to unlock them.
 3. **The votes are automated**, for Aero pools on any of six chains: Base, Ethereum, Optimism, Arbitrum, Robinhood and Ink.
 4. **Rewards are harvested weekly.** 80% goes to stakers, paid in USDC.
 5. **Stake your iAERO** as xiAERO (claim USDC) or aXiAERO (auto-compound).
@@ -45,7 +45,7 @@ Enter the amount, press **Review stake** and confirm in your wallet. See [Stakin
 ## Understanding the Tokens
 
 ### iAERO: your liquid token
-- **What it represents:** AERO locked permanently in iAERO's Aero stakes
+- **How it is made:** minted when AERO is deposited into iAERO's permanent Aero stakes; not redeemable for that AERO
 - **On deposit:** 1 AERO gives 0.95 iAERO (5% protocol fee)
 - **Use it to:** stake for USDC, trade, or provide liquidity
 - **Supply:** minted when AERO or an Aero stake is deposited
@@ -103,7 +103,7 @@ It is pooled in iAERO's stakes and voted by the protocol's keeper. See [Voting S
 - **Smart contract risk:** the protocol relies on smart contracts, some of them new. Published audit reports are listed under Technical Documentation.
 - **No redemption:** iAERO cannot be converted back to AERO.
 - **Price risk:** iAERO may trade below the value of the AERO behind it.
-- **Administration:** the protocol Safe, a 3-of-4 multisig, sets the voting limits and administers the contracts.
+- **Administration:** the protocol Safe, a 3-of-4 multisig, sets the voting limits and administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it. It can also withdraw a stake from the vault. <!-- OWNER: leaf reward vault management wording -->
 
 ## Next Steps
 
