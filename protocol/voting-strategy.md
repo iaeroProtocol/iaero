@@ -1,188 +1,66 @@
 # Voting Strategy: Maximizing Protocol Returns
 
-> **Aero migration (22 Oct 2026).** This page describes voting on Aerodrome gauges with the PermalockVault V5 veNFT. Since 22 Oct 2026 the protocol's stake is the permanent Aero stake #1584, which votes through the Aero Voter (`0x49d7d4f17Ec56Ef8fA04E464AF5D1A4942CC31e6`). See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+> **Updated November 2026.** Since 5 November 2026, iAERO's main stake #1584 is held by the AeroStakeVault and voted by an automated keeper on Aero, across several chains. The previous system, the VotingManager voting PermalockVault V5's veNFT on Aerodrome, is retired: see [Legacy](#legacy-the-votingmanager-on-aerodrome) at the end.
 
 ## Overview
 
-The iAERO voting strategy optimizes veAERO voting power allocation across Aerodrome gauges to maximize returns for iAERO stakers. Unlike manual voting, our system uses data-driven decisions based on bribes, fees, and strategic value.
+iAERO's votes decide which Aero pools its stake supports. Voters earn the trading fees and incentives paid to the pools they vote for, so better votes mean more rewards for iAERO stakers. iAERO's votes are planned with data and sent automatically, inside limits that are enforced on-chain.
 
-## Core Principles
+## What Is Voted
 
-### 1. ROI Maximization
-Every vote aims to generate maximum value per unit of voting power
+- **#1584**, iAERO's permanent Aero stake: 4,853,405.56 AERO as of 11 November 2026.
+- It is held by the **AeroStakeVault** (`0xA21cA21973681bB68A42B8387E86cA7c144D2de2`) on Base.
 
-### 2. Automated Execution
-No manual intervention - votes execute programmatically each epoch
+## Where It Can Vote
 
-### 3. Transparent Allocation
-All voting decisions are on-chain and verifiable
+Aero lets one stake split its votes across several chains. The vault lets the keeper vote on the chains where iAERO's reward payout is set up. As of 11 November 2026 these are:
 
-## The Optimization Algorithm
+| Chain | Chain ID | Rewards are claimed to |
+|---|---|---|
+| Base | 8453 | AeroRewardForwarder v2 `0x5ceEF9c4D123c0D0b52311403A30cE115d973884` |
+| Ethereum | 1 | AeroLeafRewardVault `0xC6bcDf0d212341B4d6fA6Dd94cEed6431E08985B` |
+| Optimism | 10 | AeroLeafRewardVault (same address) |
+| Arbitrum | 42161 | AeroLeafRewardVault (same address) |
+| Robinhood | 4663 | AeroLeafRewardVault (same address) |
+| Ink | 57073 | AeroLeafRewardVault (same address) |
 
-### Step 1: Data Collection
-Each epoch, the system collects:
-- **Bribe Values**: USD value of all bribes per pool
-- **Historical Fees**: Past fee generation by pool
-- **Base Revenue**: Strategic value assignments
-- **Pool Health**: TVL, volume, and gauge status
-- **Current Votes**: Essential for calculating ROV (Return on Vote)
+Optimism and Ink were added on 11 November 2026; the other four have been allowed since #1584 moved into the vault on 5 November 2026. The protocol Safe decides which chains are allowed.
 
-### Step 2: Score Calculation
+## How the Votes Are Chosen
 
-**Components:**
-- **Bribes**: Current epoch bribes converted to USD via oracles
-- **Discount Factor**: Usually 100%, can be adjusted for risk
-- **Base Revenue**: Keeper-assigned strategic value
-- **Historical Performance**: 30-day average fees generated
-- **Current Votes**: Votes given to pool so far during epoch
+1. **Forecast.** For every pool on every allowed chain, the keeper estimates the fees and incentives a vote is likely to earn, taking account of the votes already there.
+2. **Optimise.** It works out the split of #1584 across chains and pools that is expected to earn the most.
+3. **Check.** It simulates the exact transaction before sending it. If anything is unclear, it does nothing: the existing votes stay in place and keep earning.
+4. **Send.** It sends the votes through the AeroStakeVault, which checks them against the on-chain limits.
 
-### Step 3: Weight Allocation
+### How often
 
-### Step 4: Rebalancing
-Remaining weight after constraints is redistributed using the "largest remainder" method to ensure exactly 100% allocation.
-Constraints and Limits
-Minimum Vote Weight
+Aero lets a stake change its votes on a chain once per cooldown. On Base the cooldown is currently 169,200 seconds (47 hours). The keeper re-plans when each cooldown ends.
 
-Threshold: 0.05% (5 basis points)
-Reason: Gas efficiency and impact threshold
-Pools below minimum receive no votes
+## On-Chain Limits
 
-Maximum Pool Allocation
+The AeroStakeVault enforces limits that the protocol Safe sets and can change. The keeper cannot raise them or move the stake. On Base, rewards can only be claimed to the AeroRewardForwarder v2, which passes them to the RewardsHarvester. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base. The vault also has a delayed recovery path for a lost Safe: see [Recovery path](vault-system.md#recovery-path).
 
-Cap: 70% of voting power
-Reason: Risk diversification
-Prevents single pool domination
+| Limit | Setting on 11 November 2026 |
+|---|---|
+| Allowed chains | The six chains above |
+| Share of the stake on each chain | 0% to 100% |
+| Cap per pool | None (100%) |
+| Base pools | Must be live (activated gauge, non-zero emission cap) |
+| Reward addresses | Fixed per chain, as in the table above |
 
-Eligible Pools
+## Where the Rewards Go
 
-Must have active gauge
-Must be whitelisted by keeper
-Must have sufficient liquidity
+The rewards are collected every week and split: 80% to stakers in USDC, 10% to the TreasuryDistributor (for LIQ stakers and the treasury), 10% to the peg reserve. See [Rewards Harvesting](../getting-started/convert-or-compound.md).
 
-Oracle Integration
-Price Feeds
-All bribes valued using Chainlink oracles:
+## Verification
 
-Real-time price discovery
-Manipulation resistance
-Multi-token support
+Anyone can check iAERO's votes on-chain:
+- **Owner of #1584:** `ownerOf(1584)` on the Aero VotingEscrow (`0xBF7977E1521e9a3032bf7243Ee4712f311f13915`) returns the AeroStakeVault.
+- **Chains #1584 votes on:** `allocationChainIds(1584)` on the Aero Voter (`0x49d7d4f17Ec56Ef8fA04E464AF5D1A4942CC31e6`).
+- **Allowed chains and limits:** `chainLimits(chainId)` and `rewardRecipient(chainId)` on the AeroStakeVault.
+- **Vote transactions:** the AeroStakeVault's transactions on [Basescan](https://basescan.org/address/0xA21cA21973681bB68A42B8387E86cA7c144D2de2).
 
-Supported Bribe Tokens
+## Legacy: the VotingManager on Aerodrome
 
-AERO
-USDC/USDT
-ETH/WETH
-Major protocol tokens
-
-Staleness Protection
-
-Maximum oracle age: 3600 seconds
-Fallback: Skip pools with stale prices
-
-### Strategic Considerations
-Base Revenue Assignments
-Keepers can assign base revenue to pools for strategic reasons:
-High Priority Pools:
-
-iAERO/AERO - Maintain protocol liquidity
-AERO/USDC - Core ecosystem pair
-Strategic partner pools
-
-### Example Assignments:
-iAERO/AERO: $10,000 base revenue (ensures consistent votes)
-AERO/USDC: $5,000 base revenue
-Partner pools: $1,000-3,000 based on agreements
-Multi-Epoch Planning
-Bribes can be deposited for multiple epochs:
-
-Provides vote certainty for bribers
-Smooths out weekly volatility
-Enables long-term partnerships
-
-### Execution Timeline
-Weekly Cycle
-Wednesday 23:00 UTC: Epoch ends
-Thursday 00:00 UTC: New epoch begins
-Thursday 00:00-23:59 UTC: Voting window
-
-00:00-12:00: Data collection and calculation
-12:00-18:00: Keeper review period
-18:00-23:59: Vote execution
-
-Friday: Rewards distribution
-Performance Metrics
-Key Indicators
-
-Vote Efficiency: $ earned per veAERO voting power
-Bribe Capture Rate: % of available bribes earned
-Execution Rate: % of epochs successfully voted
-
-Historical Performance
-Typical returns by source:
-
-Bribes: 60-70% of total
-Trading fees: 20-30% of total
-AERO emissions: 10-20% of total
-
-Manual Override
-While fully automated, the system includes safety overrides:
-Keeper Intervention
-Authorized keepers can:
-
-Adjust base revenue values
-Add/remove eligible pools
-Execute votes with custom weights
-
-Emergency Procedures
-If automation fails:
-
-Keeper alerts triggered
-Manual vote execution
-Post-mortem analysis
-
-Competitive Advantages
-vs Manual Voting
-
-Never misses epochs (100% participation)
-Optimizes across all pools (not just familiar ones)
-Responds to real-time bribes (data-driven)
-
-vs Other Managers
-
-Transparent algorithm (fully on-chain)
-No hidden deals (all bribes visible)
-Decentralized execution (multiple keepers)
-
-### Future Improvements
-Machine Learning Integration
-
-Predict future bribe patterns
-Optimize for multi-epoch outcomes
-Adapt to market conditions
-
-Cross-Protocol Voting
-
-Coordinate with other protocols
-Joint voting strategies
-Shared liquidity initiatives
-
-### Governance Integration
-
-LIQ holder input on strategy
-Community pool priorities
-Revenue sharing adjustments
-
-### Example Allocation
-Here's a typical epoch allocation:
-PoolBribesBaseScoreWeightAERO/USDC$50,000$5,000$55,00027.5%iAERO/AERO$20,000$10,000$30,00015.0%ETH/USDC$40,000$0$40,00020.0%WBTC/ETH$35,000$0$35,00017.5%Others (10 pools)$40,000$0$40,00020.0%Total$185,000$15,000$200,000100%
-This allocation maximizes returns while maintaining strategic positions in key pools.
-Verification
-All votes can be verified on-chain:
-
-Check VotingManager contract for execution
-View vote transaction on Basescan
-Verify weights on Aerodrome UI
-Calculate expected vs actual returns
-
-The strategy is fully transparent and auditable, ensuring alignment with iAERO staker interests.
-
+Until the Aero migration on 22 October 2026, the **VotingManager** (`0xA0EBbdeD0E201a9C37F4Bffbb831CB8Db9FEd0B8`) voted PermalockVault V5's veNFT on Aerodrome once per weekly epoch. It scored each pool by its incentives (valued with Chainlink prices) and fees, applied a minimum vote weight and a per-pool cap, and allocated the votes proportionally. Between 22 October and 5 November 2026, #1584 was voted by the protocol Safe directly. The VotingManager is retired; its audit report is at [Audit Voting Manager Optimised](../technical/AUDIT-VotingManagerOptimised.md).

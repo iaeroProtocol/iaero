@@ -2,121 +2,111 @@
 
 ## What Problem Does iAERO Solve?
 
-Aerodrome's veAERO model creates a dilemma: lock your AERO for up to 4 years to maximize voting rewards, or keep it liquid and earn nothing. Most users end up somewhere in between - locking for shorter periods and getting suboptimal rewards, or forgetting to vote and missing out entirely.
+Aero rewards people who lock AERO in a stake and vote with it. But locked AERO cannot be used or sold, and the votes need managing. Most people either leave their AERO unlocked and earn nothing, or lock it and give up access to it.
 
-iAERO eliminates this trade-off by pooling user deposits into a protocol-managed vault that maintains maximum voting power while giving users liquid tokens they can trade anytime.
+iAERO pools deposits into permanent, protocol-managed Aero stakes and gives you a liquid token, iAERO, in return. The protocol handles the votes; you can trade iAERO at any time, or stake it to earn USDC.
 
 ## How It Works: The 30-Second Version
 
-1. **You deposit veAERO NFTs or AERO** into the vault
-2. **Vault locks it permanently** in veAERO for maximum voting power
-3. **You receive iAERO tokens** (95% of deposit after 5% fee)
-4. **You receive bonus LIQ tokens** (governance/rewards token)
-5. **Stake your iAERO** to earn 80% of all voting rewards
-6. **Vault votes automatically** every week using optimal strategy
-7. **Trade iAERO anytime** if you need liquidity
+1. **Get iAERO.** Deposit AERO or an Aero stake (you get 95% as iAERO, plus a LIQ bonus), or buy iAERO on the market.
+2. **The AERO goes into iAERO's Aero stakes**, which are permanent locks on Aero, held by the AeroStakeVault. The protocol does not plan to unlock them.
+3. **The votes are automated**, for Aero pools on any of six chains: Base, Ethereum, Optimism, Arbitrum, Robinhood and Ink.
+4. **Rewards are harvested weekly.** 80% goes to stakers, paid in USDC.
+5. **Stake your iAERO** as xiAERO (claim USDC) or aXiAERO (auto-compound).
+6. **Trade iAERO any time** if you need liquidity.
 
-## Your First Deposit: Step-by-Step
+## Your First Steps
 
 ### Prerequisites
-- AERO tokens or veAERO NFT in your wallet
-- ETH for gas fees (Base network)
-- Connected wallet (MetaMask, Rabby, etc.)
+- A wallet on Base (for example MetaMask or Rabby)
+- A little ETH on Base for gas
+- AERO, an Aero stake, or funds to buy iAERO
 
-### Step 1: Connect Your Wallet
-Navigate to [iaero.finance](https://iaero.finance) and connect your wallet. Make sure you're on Base network.
+### Step 1: Connect your wallet
+Go to [app.iaero.finance](https://app.iaero.finance) and connect your wallet. Switch to Base when asked.
 
-### Step 2: Choose Deposit Type
+### Step 2: Get iAERO
+Open **Get iAERO** and pick a route:
 
-**Option A: Deposit AERO**
-- Best for: Fresh AERO holders
-- Process: Simple one-click deposit
-- You get: iAERO + LIQ tokens
+- **Buy with Rift**: bring assets from another chain and arrive with iAERO on Base.
+- **Deposit AERO**: deposit new AERO. Minimum 1 AERO, maximum 10,000,000 AERO per deposit. See [Depositing AERO](guides/deposit-aero.md).
+- **Deposit NFT**: deposit an existing Aero stake of at least 5,000 AERO. See [Depositing an Aero stake](guides/deposit-venft.md).
 
-**Option B: Deposit veNFT**
-- Best for: Existing veAERO holders
-- Process: Transfer your veNFT to vault
-- You get: iAERO + LIQ based on locked amount
+You can also swap for iAERO on [Aero](https://app.aero.xyz/swap).
 
-### Step 3: Enter Amount
-- Minimum: 1 AERO
-- Maximum: 10,000,000 AERO per transaction
-- Fee: 5% (goes to protocol treasury)
+### Step 3: Stake your iAERO
+Open **Stake & claim** and choose:
 
-### Step 4: Approve & Deposit
-1. Approve the vault to spend your AERO
-2. Confirm the deposit transaction
-3. Receive your iAERO and LIQ tokens
+- **Earn USDC** to receive [xiAERO](what-is-xiaero.md). Claim USDC whenever you like.
+- **Auto-compound** to receive [aXiAERO](what-is-axiaero.md). Your USDC is turned into more staked iAERO.
 
-### Step 5: Stake Your iAERO
-Don't leave your iAERO idle! Stake it immediately to earn rewards:
-1. Go to the "Stake" tab
-2. Enter your iAERO amount
-3. Confirm staking transaction
-4. Start earning automatically
-5. Receive stiAERO receipt token
+Enter the amount, press **Review stake** and confirm in your wallet. See [Staking iAERO](guides/staking-iaero.md).
 
 ## Understanding the Tokens
 
-### iAERO - Your Liquid Staking Token
-- **What it represents**: Your share of the vault's veAERO
-- **Exchange rate**: 1 AERO = 0.95 iAERO (after 5% fee)
-- **Utility**: Stake for rewards, trade on DEXs, use as collateral (coming soon)
-- **Supply**: Uncapped, minted on deposits
+### iAERO: your liquid token
+- **How it is made:** minted when AERO is deposited into iAERO's permanent Aero stakes; not redeemable for that AERO
+- **On deposit:** 1 AERO gives 0.95 iAERO (5% protocol fee)
+- **Use it to:** stake for USDC, trade, or provide liquidity
+- **Supply:** minted when AERO or an Aero stake is deposited
 
-### LIQ - Bonus Governance Token
-- **What it represents**: Governance rights and protocol ownership
-- **Emission rate**: Starts at 1 LIQ per iAERO, halves every 5M
-- **Utility**: Stake for protocol revenue share, governance voting
-- **Supply**: Capped at 100M total
+### xiAERO: staked iAERO
+- **1 iAERO staked = 1 xiAERO**, withdrawable at any time
+- Earns USDC, streamed over time
+
+### aXiAERO: compounding staked iAERO
+- A share of a vault holding xiAERO and its USDC
+- The USDC is used to buy more iAERO, so each share is backed by more xiAERO over time
+
+### LIQ: bonus and governance token
+- **Minted with each deposit**, at a rate that halves every 5,000,000 LIQ minted (0.5 LIQ per iAERO as of 11 November 2026)
+- **Stake LIQ** to share in the 8% of rewards that goes to LIQ stakers
+- **Supply:** capped at 100,000,000 LIQ
 
 ## Rewards Explained
 
-When you stake iAERO, you earn from multiple sources:
+### Where rewards come from
+iAERO's votes earn the trading fees and incentives that Aero pays to voters, on every chain where #1584 votes.
 
-### Weekly Aerodrome Rewards
-- Voting bribes from protocols
-- Trading fees from gauges
-- AERO emissions
+### How they are split
 
-### Distribution Breakdown
+```
+Weekly rewards
+├── 80% → iAERO stakers, converted to USDC (xiAERO and aXiAERO)
+├── 10% → TreasuryDistributor
+│         ├── 80% of this (8% of the total) → LIQ stakers
+│         └── 20% of this (2% of the total) → treasury
+└── 10% → peg reserve
+```
 
-
-Total Rewards
-├── 80% → iAERO stakers (you!)
-├── 10% → Protocol treasury
-└── 10% → Peg defense fund
-
-### Claiming Rewards
-- Rewards accumulate automatically
-- Claim anytime with no penalty
-- Multiple tokens (AERO, USDC, ETH, etc.)
-- Auto-compound by restaking
+### Claiming
+- USDC streams to xiAERO holders over 3 days after each funding.
+- Claim with **Claim USDC** at any time. There is no deadline and no fee.
+- aXiAERO holders do not claim: their USDC is compounded for them.
 
 ## Common Questions
 
-**Q: Can I get my AERO back?**
-A: No, deposits are one-way. But you can sell iAERO on the open market anytime.
+**Can I get my AERO back?**
+No. Deposits are one-way. You can sell iAERO on the market at any time.
 
-**Q: How often are rewards distributed?**
-A: Weekly, after each voting epoch. Keepers harvest and distribute automatically.
+**How often are rewards distributed?**
+The rewards are harvested once a week (Thursday, 00:01 UTC). The stakers' share is sold for USDC and streamed to xiAERO holders.
 
-**Q: Is there a lock period for staking?**
-A: No! Stake and unstake iAERO instantly with no cooldown.
+**Is there a lock period for staking?**
+No. You can withdraw xiAERO for iAERO, or redeem aXiAERO, at any time.
 
-**Q: What happens to my voting power?**
-A: It's pooled with everyone else's and voted optimally by the protocol.
+**What happens to the voting power?**
+It is pooled in iAERO's stakes and voted by the protocol's keeper. See [Voting Strategy](../protocol/voting-strategy.md).
 
 ## Risk Considerations
 
-- **Smart Contract Risk**: Contracts are unaudited (audit pending)
-- **No Redemption**: Cannot convert iAERO back to AERO
-- **Price Risk**: iAERO may trade below intrinsic value
-- **Centralization**: Voting controlled by protocol multisig
+- **Smart contract risk:** the protocol relies on smart contracts, some of them new. Published audit reports are listed under Technical Documentation.
+- **No redemption:** iAERO cannot be converted back to AERO.
+- **Price risk:** iAERO may trade below the value of the AERO behind it.
+- **Administration:** the protocol Safe, a 3-of-4 multisig, sets the voting limits and administers iAERO's contracts on Base, including the iAERO token and who may mint and burn it. It can also withdraw a stake from the vault. On Ethereum, Optimism, Arbitrum, Robinhood and Ink, rewards collect in iAERO's leaf reward vault, which is managed by the iAERO team, before they are sold and bridged to Base.
 
 ## Next Steps
 
-✅ **Completed first deposit?** Great! Now:
-1. [Stake your iAERO](guides/staking-iaero.md) for rewards
-2. [Add liquidity](guides/providing-liquidity.md) to iAERO/AERO pool
-3. [Learn about LIQ](tokenomics/liq-token.md) tokenomics
+1. [Stake your iAERO](guides/staking-iaero.md)
+2. [Add liquidity](guides/providing-liquidity.md) to the iAERO/AERO pools on Aero
+3. [Learn about LIQ](../tokenomics/liq-token.md)

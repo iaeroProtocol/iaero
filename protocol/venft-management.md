@@ -1,172 +1,54 @@
-> **Legacy (PermalockVault V5).** This page describes veNFT management in PermalockVault V5 on Aerodrome. On 22 Oct 2026 the protocol's veAERO position was moved out of V5 and converted 1:1 into the permanent Aero stake #1584, and V5 deposits are paused. See [Aero Migration (22 Oct 2026)](../getting-started/aero-migration.md).
+# Aero Stake (veNFT) Management
 
-### Primary NFT Management
+> **Updated November 2026.** On Aero, the old veAERO NFTs are replaced by **Aero stakes**: NFTs on Aero's VotingEscrow (`0xBF7977E1521e9a3032bf7243Ee4712f311f13915`). This page describes how iAERO manages its Aero stakes today. The PermalockVault V5 approach (re-locking every few months and merging NFTs on Aerodrome) is retired: see the [Legacy](#legacy-venft-management-in-permalockvault-v5) section at the end.
 
-**Selection Criteria**
-- First valid NFT becomes primary
-- Highest balance preferred
-- Must not be expired
-- Must be owned by vault
+## The Main Stake: #1584
 
-**Maintenance Schedule**
-- Rebase every ~3 months
-- Merge on new deposits
-- Weekly voting execution
-- Continuous optimization
+- **What it is:** iAERO's main Aero stake, token ID **1584** on Aero's VotingEscrow.
+- **Size:** 4,853,405.56 AERO as of 11 November 2026.
+- **Lock:** permanent. A permanent stake keeps its full voting power and never needs re-locking, so there is no rebase or re-lock routine.
+- **Where it is held:** in the **AeroStakeVault** (`0xA21cA21973681bB68A42B8387E86cA7c144D2de2`) since 5 November 2026.
+- **History:** created on 22 October 2026 by converting iAERO's veAERO from PermalockVault V5 1:1 into a permanent Aero stake. It was held by the protocol Safe until it moved into the vault.
 
-## Advanced NFT Functions
+You can check all of this on-chain: `ownerOf(1584)` on the VotingEscrow returns the AeroStakeVault, and `staked(1584)` returns the amount and `isPermanent = true`.
 
-### Merging Operations
+## Stakes Deposited by Users
 
-**Why Merge?**
-- Consolidates voting power
-- Reduces gas costs
-- Simplifies management
-- Improves capital efficiency
+Users can deposit their own Aero stakes through AeroStakeDeposit v2 (see [Depositing an Aero stake](../getting-started/guides/deposit-venft.md)):
+- each deposited stake must hold at least 5,000 AERO;
+- it is made permanent if it was not already;
+- it is held in the AeroStakeVault next to #1584, as a permanent lock.
 
-**Merge Rules**
-- Only merge into primary
-- Source NFT destroyed
-- Balances combined
-- Voting power consolidated
+## What Can Happen to a Stake in the Vault
 
-**Auto-Merge Triggers**
-- New deposit received
-- Maintenance called
-- Gas optimization batch
+| Action | Possible? | Who |
+|---|---|---|
+| Vote on Aero pools | Yes | The keeper, within the Safe's on-chain limits |
+| Claim rewards | Yes | To the fixed reward address for each chain only |
+| Withdraw to a user | No | Deposits are one-way |
+| Unlock the AERO | Not planned | The stakes are permanent locks and the vault cannot unlock them. A stake the Safe has withdrawn could be transferred, or changed back to a normal (decaying) lock in Aero |
+| Move out of the vault | Only to the vault's Safe, today the protocol Safe | The Safe |
+| Change the limits or reward addresses | Yes | The Safe |
 
-### Rebase Operations
+The vault also has a delayed recovery path for a lost Safe: see [Recovery path](vault-system.md#recovery-path).
 
-**Purpose**: Maintains maximum voting power by extending lock duration
+## Voting Across Chains
 
-**When Rebasing Occurs**
-- Lock duration < 3.75 years
-- Called by keeper
-- Part of maintenance routine
+Aero lets one stake split its votes across several chains. The AeroStakeVault lets iAERO's stakes vote on Base, Ethereum, Optimism, Arbitrum, Robinhood and Ink. Votes on other chains are sent from Base as cross-chain messages, and the rewards earned there are claimed on that chain. See [Voting Strategy](voting-strategy.md) and [Rewards Harvesting](../getting-started/convert-or-compound.md).
 
-**Process Example**
+## Benefits vs Holding a Stake Yourself
 
-if (timeRemaining < MAX_LOCK - 3 months) {
-extendLock(MAX_LOCK_DURATION);
-}
+- No votes to plan or send.
+- No rewards to claim on several chains, or tokens to sell.
+- A liquid token (iAERO) instead of a locked NFT.
+- Rewards for stakers in USDC.
 
-Enables:
-- Gauge voting
-- Bribe claiming
-- Fee collection
-- Delegation
+## Legacy: veNFT Management in PermalockVault V5
 
-## NFT Security Model
+Until the Aero migration on 22 October 2026, PermalockVault V5 (`0x180DAB53968e599Dd43CF431E27CB01AA5C37909`) managed iAERO's veAERO on Aerodrome:
+- one **primary NFT** held the bulk of the voting power at the maximum 4-year lock;
+- a keeper **re-locked** it back to 4 years whenever the remaining lock fell below about 3.75 years;
+- deposited veNFTs were **merged** into the primary NFT during maintenance;
+- the VotingManager voted the primary NFT every week.
 
-### Ownership Structure
-- Vault owns NFTs permanently
-- Users cannot withdraw NFTs
-- Only authorized contracts can execute actions
-
-### Protected Functions
-- **Transfer**: Disabled except deposits
-- **Merge**: Only vault-controlled NFTs
-- **Split**: Not supported
-- **Burn**: Never allowed
-
-### Emergency Procedures
-
-**Stranded NFT Recovery**
-
-For NFTs sent outside deposit flow:
-- Owner can rescue if not managed
-- Requires proof of non-management
-- One-time recovery option
-
-**Failed Merge Handling**
-- Retry in next maintenance
-- Manual merge by owner
-- Skip if consistently failing
-
-## Optimization Strategies
-
-### Gas Optimization
-- Batch merges when possible
-- Combine rebase with merge
-- Skip unnecessary operations
-- Cache state reads
-
-### Voting Power Maximization
-- Always maintain max lock
-- Merge quickly after deposits
-- Never let positions expire
-- Compound all rewards
-
-### Management Efficiency
-- Automate via keepers
-- Monitor merge success
-- Track rebase schedule
-- Alert on anomalies
-
-## Integration with Aerodrome
-
-### Gauge Voting
-- Vote on liquidity gauges
-- Direct emissions
-- Maximize bribes
-- Optimize returns
-
-### Reward Claims
-- Collect trading fees
-- Harvest bribes
-- Claim emissions
-- Process rebases
-
-### Compatibility
-- Supports all veAERO functions
-- Handles permanent locks
-- Manages standard locks
-- Processes all reward types
-
-## User Considerations
-
-### Before Depositing NFTs
-- Check lock isn't expired
-- Disable auto-max lock
-- Verify ownership
-- Understand permanence
-
-### After Depositing
-- NFT permanently in vault
-- Receive iAERO tokens
-- Cannot reclaim NFT
-- Voting automated
-
-### Benefits vs Direct Holding
-- No manual voting needed
-- No rebase management
-- Liquid iAERO tokens
-- Professional optimization
-- Compound efficiency
-
-## Technical Specifications
-
-### Supported Operations
-
-| Operation | Supported |
-|-----------|-----------|
-| Deposit | ✅ |
-| Merge | ✅ |
-| Extend lock | ✅ |
-| Vote | ✅ |
-| Claim rewards | ✅ |
-| Withdraw | ❌ |
-| Split | ❌ |
-| Reduce lock | ❌ |
-| Transfer out | ❌ |
-
-### Gas Costs (Estimated)
-
-| Operation | Gas Cost |
-|-----------|----------|
-| Deposit veNFT | ~200k gas |
-| Merge NFTs | ~150k gas |
-| Rebase lock | ~100k gas |
-| Vote execution | ~300k gas |
-
-These operations are optimized and batched where possible to minimize costs.
+V5 is retired and its deposits are paused. Its audit report is at [Audit PermaLock Vault](../technical/AUDIT-PermaLockVault_V5.md).

@@ -2,20 +2,23 @@
 
 On 22 October 2026, Aero replaced Aerodrome on Base. This page sets out what changed for iAERO and what did not.
 
+> **Updated 11 November 2026.** Several things have changed since 22 October: the stake #1584 now sits in the AeroStakeVault and is voted automatically, deposits have reopened, and staking has moved to xiAERO and aXiAERO. See [What changed after 22 October](#what-changed-after-22-october) below.
+
 ## What happened
 
 - iAERO's veAERO position (4.85M AERO) was moved out of PermalockVault V5 and converted 1:1 into a **permanent Aero stake, #1584** on the Aero VotingEscrow (`0xBF7977E1521e9a3032bf7243Ee4712f311f13915`).
-- A new sAERO vault comes next. These docs will be updated when it is live.
+- A new vault for #1584 came next. It went live on 5 November 2026 (see below).
 
-## What is paused
+## What was paused
 
-- **Deposits into PermalockVault V5 are paused**, for both AERO and veNFTs. The [Depositing AERO](guides/deposit-aero.md) and [Depositing veNFTs](guides/deposit-venft.md) flows do not work while the pause is in place.
+- **Deposits into PermalockVault V5 were paused**, for both AERO and veNFTs, and V5 stays retired. Deposits reopened on 5 November 2026 through a new contract, AeroStakeDeposit v2: see [Depositing AERO](guides/deposit-aero.md) and [Depositing an Aero stake](guides/deposit-venft.md).
 
-## What works as normal
+## What changed after 22 October
 
-- Staking iAERO
-- Unstaking iAERO
-- Claiming rewards
+- **5 November 2026: #1584 moved into the AeroStakeVault.** The protocol Safe transferred #1584 into the [AeroStakeVault](../protocol/vault-system.md) (`0xA21cA21973681bB68A42B8387E86cA7c144D2de2`). Since then an automated keeper votes it, inside limits the Safe sets on-chain. See [Voting Strategy](../protocol/voting-strategy.md).
+- **5 November 2026: deposits reopened.** AeroStakeDeposit v2 (`0xc9B2D05873a3c49a4142a04a2DCBda81aCC2570D`) takes new AERO, or an existing Aero stake, and mints iAERO and LIQ by the same rules as V5.
+- **November 2026: new staking.** Staking iAERO now gives you [xiAERO](what-is-xiaero.md), which earns USDC, or [aXiAERO](what-is-axiaero.md), which compounds. The 5 November 2026 harvest was the last one paid to the old staking (stiAERO). The Auto-USDC Vault, which pays one week late, is due to process that last week after the 12 November 2026 harvest. On 10 November 2026 the stakers' share of each harvest was pointed at the new RewardConverter. The first funding of the new staking is planned for the harvest on 12 November 2026. If you staked before, see [Moving from stiAERO or the Auto-USDC Vault](guides/moving-from-stiaero.md).
+- **Rewards from more chains.** #1584 can now be voted on Base, Ethereum, Optimism, Arbitrum, Robinhood and Ink. Rewards earned on other chains are sold and sent back to Base, where they join the weekly harvest. See [Rewards Harvesting](convert-or-compound.md).
 
 ## Tokens
 
@@ -58,11 +61,10 @@ Swap on Aero at [app.aero.xyz/swap](https://app.aero.xyz/swap). Aero's full list
 |----------|---------|
 | iAERO | `0x81034Fb34009115F215f5d5F564AAc9FfA46a1Dc` |
 | LIQ | `0x7ee8964160126081cebC443a42482E95e393e6A8` |
-| StakingDistributor (Epoch Distributor) | `0x781A80fA817b5a146C440F03EF8643f4aca6588A` |
-| stiAERO | `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D` |
-| Auto-USDC Vault | `0xFE5c929677D97723dc822C86c93c7e2D1B59c774` |
 | RewardsSwapper | `0x25f11f947309df89bf4d36da5d9a9fb5f1e186c1` |
 | Treasury MultiSig | `0x1039CB48254a3150fC604d4B9ea08F66f4739D37` |
+
+The previous staking contracts, StakingDistributor (Epoch Distributor) `0x781A80fA817b5a146C440F03EF8643f4aca6588A`, stiAERO `0x72C135B8eEBC57A3823f0920233e1A90FF4D683D` and the Auto-USDC Vault `0xFE5c929677D97723dc822C86c93c7e2D1B59c774`, are now legacy. The new contracts are on [Contract Addresses](../technical-documentation/contract-addresses.md).
 
 ## Retired
 

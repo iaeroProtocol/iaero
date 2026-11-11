@@ -1,43 +1,45 @@
 # Reward Distribution
 
+> **Updated November 2026.** iAERO stakers are now paid in USDC through [xiAERO](../getting-started/what-is-xiaero.md). The split between stakers, LIQ stakers, the treasury and the peg reserve is unchanged.
+
 ## Sources of Rewards
 
-1. **Aerodrome Voting Rewards**
-   - Bribes from protocols
-   - Trading fees from gauges
-   - AERO emissions
-
-2. **Partner Incentives**
-   - Direct bribes to the vault
-   - Partnership rewards
+**Aero voting rewards**, earned by iAERO's stake #1584 on every chain where it votes (Base, Ethereum, Optimism, Arbitrum, Robinhood and Ink are allowed):
+- incentives (bribes) that protocols pay to the voters of their pools;
+- trading fees from the pools voted for.
 
 ## Distribution Flow
 
-Aerodrome Rewards → RewardsHarvester → Distribution
-├── 80% to iAERO stakers
-├── 10% to treasury
-└── 10% to peg reserve
+The RewardsHarvester splits every weekly harvest. The percentages are fixed in the contracts (read on-chain on 11 November 2026). Where each share goes is set by the protocol Safe, and the Safe decides which tokens the RewardConverter handles: if it retires a token, the stakers' share of that token goes to the TreasuryDistributor instead.
+
+```
+Weekly harvest (RewardsHarvester)
+├── 80% → iAERO stakers: sold for USDC by the RewardConverter, streamed to xiAERO
+├── 10% → TreasuryDistributor
+│         ├── 80% of this (8% of the total) → LIQ stakers
+│         └── 20% of this (2% of the total) → treasury
+└── 10% → peg reserve
+```
 
 ## Claiming Process
 
-### For iAERO Stakers
+### For iAERO stakers
 
-1. Stake iAERO in the StakingDistributor
-2. Rewards accumulate automatically and distribute after each epoch ends
-3. Claim anytime through the UI
+1. Stake iAERO as **xiAERO** (or **aXiAERO** to compound). See [Staking iAERO](../getting-started/guides/staking-iaero.md).
+2. After each weekly harvest, the stakers' share is sold for USDC and streamed to xiAERO holders over 3 days.
+3. Claim your USDC at any time with **Claim USDC**. aXiAERO compounds instead.
 
-### Reward Tokens
+### For LIQ stakers
 
-Common reward tokens include:
-- AERO
-- USDC
-- ETH
-- Various protocol tokens
+LIQ stakers receive their share through the LIQ Staking Distributor, in the tokens it is paid in. Claim them on the app's **LIQ** page. See [What is LIQ?](../getting-started/what-is-liq.md).
 
-## Compounding
+### Reward tokens
 
-The vault automatically:
-- Claims all available rewards weekly
-- Processes and distributes to stakers
-- Reinvests protocol fees
+- **iAERO stakers:** USDC only.
+- **LIQ stakers:** the reward tokens themselves (for example AERO, USDC, WETH and other incentive tokens).
 
+## Rewards From Before November 2026
+
+The previous staking (stiAERO) and the Auto-USDC Vault paid rewards differently. Their last funding was the 5 November 2026 harvest. The intent is that rewards already funded stay claimable on the app's Legacy page; those contracts are administered by the protocol Safe, which can pause them. See [Moving from stiAERO or the Auto-USDC Vault](../getting-started/guides/moving-from-stiaero.md).
+
+More detail on each step: [Rewards Harvesting](../getting-started/convert-or-compound.md).

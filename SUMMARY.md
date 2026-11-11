@@ -5,27 +5,28 @@
 ## Getting Started
 
 * [Aero Migration (22 Oct 2026)](getting-started/aero-migration.md)
+* [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md)
 * [What is iAERO?](getting-started/what-is-iaero.md)
+* [What is xiAERO?](getting-started/what-is-xiaero.md)
+* [What is aXiAERO?](getting-started/what-is-axiaero.md)
 * [Our Unique Proposition](getting-started/iaero-usps.md)
 * [veAERO Community Alignment](getting-started/why-we-win-together.md)
-* [What is stiAERO?](getting-started/what-is-stiaero.md)
 * [What is LIQ?](getting-started/what-is-liq.md)
 * [Key Concepts](getting-started/key-concepts-and-how-to.md)
 * [Fees & Earnings](getting-started/the-magic-of-iaero.md)
 * [Rewards Harvesting](getting-started/convert-or-compound.md)
-* [Auto-USDC Vault](getting-started/auto-usdc-vault.md)
 * [Token Sweeper](getting-started/token-sweeper.md)
 
 ## Protocol Mechanics
 
 * [Vault System](protocol/vault-system.md)
-* [veNFT Management](protocol/venft-management.md)
+* [Aero Stake (veNFT) Management](protocol/venft-management.md)
 * [Voting Strategy](protocol/voting-strategy.md)
 
 ## User Guides
 
 * [Depositing AERO](getting-started/guides/deposit-aero.md)
-* [Depositing veNFTs](getting-started/guides/deposit-venft.md)
+* [Depositing an Aero Stake (NFT)](getting-started/guides/deposit-venft.md)
 * [Staking iAERO](getting-started/guides/staking-iaero.md)
 * [Providing Liquidity](getting-started/guides/providing-liquidity.md)
 
@@ -47,7 +48,11 @@
 * [Audit Rewards Harvester](technical/AUDIT-RewardsHarvester.md)
 * [Audit LIQ Staking Distributor](technical/AUDIT-LIQStakingDistributor.md)
 * [Audits Epoch Staking Distributor & stiAERO](technical/AUDIT-EpochStakingDistributor-stiAERO.md)
-* 
+
+## Legacy
+
+* [What is stiAERO? (legacy)](getting-started/what-is-stiaero.md)
+* [Auto-USDC Vault (legacy)](getting-started/auto-usdc-vault.md)
 
 ## FAQ
 

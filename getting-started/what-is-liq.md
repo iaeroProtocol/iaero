@@ -26,13 +26,16 @@ Early participants receive higher LIQ emissions, rewarding early adoption and lo
 When you deposit AERO into iAERO, you receive LIQ tokens as a bonus:
 - **Starting Rate**: 1 LIQ per 1 iAERO minted
 - **Halving Schedule**: Rate cuts in half every 5M LIQ minted
-- **Your Share**: 80% (20% goes to treasury)
+- **Treasury Share**: the treasury receives an extra 20% of the LIQ you receive. It does not come out of your share.
+- **Current Rate**: the rate has halved once. As of 11 November 2026 it is 0.5 LIQ per iAERO.
 
-**Example Deposit:**
+**Example Deposit (at the 1:1 starting rate):**
 - Deposit: 1,000 AERO
 - Receive: 950 iAERO (after 5% fee)
-- Bonus: 950 LIQ (at 1:1 rate)
-- Net to you: 760 LIQ (after 20% treasury share)
+- Bonus to you: 950 LIQ
+- Treasury: an extra 190 LIQ
+
+At the current 0.5 rate, the same deposit gives you 475 LIQ (and the treasury 95 LIQ).
 
 ### Liquidity Provision Incentives (Coming Soon)
 
@@ -117,7 +120,7 @@ Protocol Fees (10% of all rewards)
 1. Stake LIQ in dedicated staking contract
 2. Earn proportional share of revenues
 3. Claim rewards anytime
-4. No lock period required
+4. Each new stake locks your staked LIQ for 7 days; staking more restarts the 7 days
 
 ## Use Cases
 
@@ -169,7 +172,7 @@ Protocol Fees (10% of all rewards)
 3. Earlier deposits = more LIQ per AERO
 
 ### Option 2: Buy on Market
-- **DEX**: Aerodrome (LIQ/USDC, LIQ/AERO pairs)
+- **DEX**: Aero (LIQ/USDC pool `0xE4553d8d7284192ab84346A9C9FFdb69dCE30C71`)
 - **Aggregators**: Use Matcha, 1inch for best price
 - **OTC**: Large trades via Discord
 
