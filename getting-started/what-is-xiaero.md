@@ -29,7 +29,7 @@ Stakers only ever receive USDC. A token that cannot yet be sold at a fair price 
 
 **Example.** You hold 1,000 xiAERO and 100,000 xiAERO exist in total. You hold 1%, so you earn 1% of every USDC streamed while you hold it.
 
-**First funding.** As of 11 November 2026 no USDC has been streamed yet. The first funding of xiAERO is planned for the weekly harvest on **Thursday 12 November 2026 at 00:01 UTC**.
+**First funding.** xiAERO was first funded by the weekly harvest on **Thursday 12 November 2026**. From then on, each weekly harvest adds the stakers' share to the stream.
 
 ## Stake
 

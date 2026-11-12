@@ -123,7 +123,7 @@ The intent is that holders can still withdraw and claim rewards already funded. 
 - **EpochStakingDistributor** (the previous staking)  
   `0x781A80fA817b5a146C440F03EF8643f4aca6588A`
 
-- **Auto-USDC Vault** (final reward week due to be processed after the 12 November 2026 harvest)  
+- **Auto-USDC Vault** (final reward week processed by the 12 November 2026 harvest)  
   `0xFE5c929677D97723dc822C86c93c7e2D1B59c774`
 
 ### Retired since the Aero migration

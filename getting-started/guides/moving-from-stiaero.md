@@ -5,13 +5,13 @@ iAERO staking moved to a new system in November 2026. If you staked iAERO before
 ## What changed
 
 - **The 5 November 2026 harvest was the last one paid into the old staking.** On 10 November 2026 the stakers' share of each harvest was pointed at the new RewardConverter, which pays stakers in USDC through [xiAERO](../what-is-xiaero.md).
-- **The first funding of the new staking is planned for the weekly harvest on Thursday 12 November 2026 (00:01 UTC).**
+- **The new staking was first funded by the weekly harvest on Thursday 12 November 2026.**
 - **Old stakes earn nothing new.** Your stiAERO stake and your Auto-USDC Vault shares do not receive any rewards beyond those already funded.
 - **Nothing moves automatically.** You withdraw from the old position and stake in the new one yourself. Each step needs your confirmation.
 - **Old rewards are meant to stay claimable.** The intent is that rewards already funded stay claimable by the wallet that earned them, and nothing is planned to stop that. You do not have to claim them before you withdraw.
 - **Who controls the old contracts.** The old staking (EpochStakingDistributor and stiAERO) and the Auto-USDC Vault are administered by the protocol Safe, which can pause them. A pause of the old staking would also stop its withdrawals and claims, and Auto-USDC Vault withdrawals, which go through it. No pause is planned, but we recommend moving soon.
 
-**The Auto-USDC Vault pays one week late.** Its last reward week, funded by the 5 November 2026 harvest, is due to be processed after the 12 November 2026 harvest. That USDC becomes claimable in the Legacy section only once the processing has run. After that the vault receives nothing new.
+**The Auto-USDC Vault pays one week late.** Its last reward week, funded by the 5 November 2026 harvest, was processed by the 12 November 2026 harvest, and that USDC is claimable in the Legacy section. The vault receives nothing new.
 
 **Withdrawing now does not cost you rewards already funded.** Each old reward week was split by balances at the start of that week (Thursday 00:00 UTC). Withdrawing your stake or vault shares does not reduce your share of weeks that have already started.
 
@@ -54,7 +54,7 @@ Your stiAERO is burned and the same amount of iAERO comes back to your wallet.
 2. Press **Claim old AutoVault USDC** to collect USDC from processed weeks.
 3. Enter the number of shares and press **Withdraw old shares**. Each share returns 1 iAERO.
 
-Claiming is separate from withdrawing: USDC for processed weeks, including the final week once it has been processed, can be claimed after you withdraw your shares.
+Claiming is separate from withdrawing: USDC for processed weeks, including the final week, can be claimed after you withdraw your shares.
 
 ## Step 5: stake in the new pool
 
