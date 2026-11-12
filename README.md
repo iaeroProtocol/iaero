@@ -1,7 +1,7 @@
 # iAERO Documentation
 ## Permanent AERO stakes. A liquid token. Rewards in USDC.
 
-> **Staking update (November 2026).** iAERO staking now uses [xiAERO](getting-started/what-is-xiaero.md) (claim USDC) and [aXiAERO](getting-started/what-is-axiaero.md) (auto-compounding). The old stiAERO staking received its last rewards from the 5 November 2026 harvest. The Auto-USDC Vault, which pays one week late, is due to process that final week after the 12 November 2026 harvest. If you staked before, see [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md).
+> **Staking update (November 2026).** iAERO staking now uses [xiAERO](getting-started/what-is-xiaero.md) (claim USDC) and [aXiAERO](getting-started/what-is-axiaero.md) (auto-compounding). The old stiAERO staking received its last rewards from the 5 November 2026 harvest. The Auto-USDC Vault, which pays one week late, processed that final week with the 12 November 2026 harvest, when xiAERO also received its first funding. If you staked before, see [Moving from stiAERO or the Auto-USDC Vault](getting-started/guides/moving-from-stiaero.md).
 
 > **Aero migration (22 Oct 2026).** Aero replaced Aerodrome on Base. iAERO's veAERO became the permanent Aero stake #1584. See [Aero Migration (22 Oct 2026)](getting-started/aero-migration.md).
 

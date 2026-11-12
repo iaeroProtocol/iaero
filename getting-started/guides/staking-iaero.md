@@ -109,7 +109,7 @@ APR = (USDC streamed over a year ÷ value of all staked iAERO) × 100. It change
 ## FAQ
 
 **When does USDC arrive?**
-After each weekly harvest (Thursday, 00:01 UTC) the stakers' share is sold for USDC and added to the stream. Each addition is paid out over the next 3 days. The first funding is planned for 12 November 2026.
+After each weekly harvest (Thursday, 00:01 UTC) the stakers' share is sold for USDC and added to the stream. Each addition is paid out over the next 3 days. The first funding was on 12 November 2026.
 
 **Can I lose my staked iAERO?**
 Only you can withdraw your xiAERO, and the xiAERO contract gives its owner no way to withdraw staked iAERO. The protocol Safe (a 3-of-4 multisig) administers the iAERO token, including who may mint and burn it. Smart contract risk also applies.

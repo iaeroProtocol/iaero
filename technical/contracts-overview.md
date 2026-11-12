@@ -146,4 +146,4 @@ User ── AERO or stake ──► AeroStakeDeposit v2 ── stake ──► A
 - **PermalockVault V5**: managed veAERO NFTs on Aerodrome (`deposit`, `depositVeNFT`, `executeNFTAction`, `performMaintenance`). Retired; deposits paused.
 - **VotingManager**: voted V5's veNFT on Aerodrome. Retired.
 - **EpochStakingDistributor and stiAERO**: the previous iAERO staking, with rewards per token and weekly epoch. No new funding after the 5 November 2026 harvest. Withdrawals and claims of funded rewards are intended to stay open; the distributor is owned by the Safe, and its `unstake`, `exit` and claim functions stop while it is paused.
-- **iAERO Auto-USDC Vault**: deposited into the previous staking and paid USDC one week late. Its final week is due to be processed after the 12 November 2026 harvest.
+- **iAERO Auto-USDC Vault**: deposited into the previous staking and paid USDC one week late. Its final week was processed by the 12 November 2026 harvest.

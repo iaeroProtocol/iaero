@@ -21,7 +21,7 @@ In the app this is the **Auto-compound** option on **Stake & claim**.
 
 No new shares are created when the vault compounds. Each share is simply backed by more xiAERO than before.
 
-**Today.** As of 11 November 2026, 1 aXiAERO redeems for exactly 1 xiAERO and no USDC, because no USDC has been streamed yet. The first funding of the stream is planned for the weekly harvest on Thursday 12 November 2026 (00:01 UTC).
+**Today.** The vault compounded for the first time on 12 November 2026, after the first funding of the stream. Since then 1 aXiAERO redeems for slightly more than 1 xiAERO, and the gap grows with each compound.
 
 **The reference price** is the 30-minute average price of iAERO in AERO on the Aero iAERO/AERO concentrated-liquidity pool, multiplied by Chainlink's AERO/USD price, and divided by Chainlink's USDC/USD price. If the reference is unavailable or out of date, compounding cannot run until it recovers. Redeeming never uses the price.
 

@@ -57,7 +57,7 @@ The **RewardConverter** (`0xA397Ad9f43967b9AE7Ab54E2dDf61CF8c5585bd8`) receives 
 - Each addition is paid out over the next 3 days, together with anything left of the previous stream. Because tokens can be converted in more than one batch, USDC can be added more than once after a harvest.
 - **xiAERO holders** claim their USDC whenever they like. The **aXiAERO vault** collects its share and the keeper compounds it into more xiAERO.
 
-The first funding of xiAERO is planned for the weekly harvest on Thursday 12 November 2026.
+xiAERO was first funded by the weekly harvest on Thursday 12 November 2026.
 
 ## What you need to do
 
@@ -77,7 +77,7 @@ The previous staking (stiAERO) paid rewards in many different tokens, per weekly
 
 To convert reward tokens that are already in your wallet, use **Sweep to USDC**, **Convert to liquid iAERO** or **Customise tokens to sweep** on the same page. You choose which tokens to convert and review the quotes before anything is swapped. Known spam tokens are hidden. For other wallet clean-ups, see [Token Sweeper](token-sweeper.md).
 
-The Auto-USDC Vault's last reward week is due to be processed after the 12 November 2026 harvest. See [Auto-USDC Vault (legacy)](auto-usdc-vault.md).
+The Auto-USDC Vault's last reward week was processed by the 12 November 2026 harvest. See [Auto-USDC Vault (legacy)](auto-usdc-vault.md).
 
 ## Contracts
 
