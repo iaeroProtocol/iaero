@@ -15,7 +15,7 @@ The Auto-USDC Vault let you deposit iAERO once and receive USDC instead of many 
 ## What changed
 
 - The old staking received its **last funding with the 5 November 2026 harvest**. From 10 November 2026 the stakers' share of each harvest goes to the RewardConverter, which funds xiAERO in USDC.
-- Because the vault pays one week late, the week funded on 5 November 2026 was **processed by the 12 November 2026 harvest**, and its USDC is claimable in the app. One small reward from that week, worth about $12 in ZRO across all holders, could not be collected yet. If it is collected later, it is added to the same week and claimed the same way.
+- Because the vault pays one week late, the week funded on 5 November 2026 was **processed by the 12 November 2026 harvest**, and its USDC is claimable in the app.
 - After that week, **the vault earns nothing new**.
 - Your share of the final week was fixed at its start, so **withdrawing your shares now does not reduce it**. Claiming is separate from withdrawing: USDC for processed weeks can be claimed after you have withdrawn.
 - The Auto-USDC Vault is administered by the protocol Safe, which can pause it. Its withdrawals go through the old staking, which the Safe can also pause. The intent is that withdrawals and claims stay open and no pause is planned, but we recommend moving soon.
