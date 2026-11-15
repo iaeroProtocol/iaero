@@ -35,7 +35,7 @@ No new shares are created when the vault compounds. Each share is simply backed 
 
 If you deposit iAERO, the app first stakes it for xiAERO and then deposits the xiAERO into the vault. These are separate transactions. If the second one does not go through, your xiAERO stays in your wallet and you can review the remaining deposit again.
 
-**Shares you receive** = xiAERO deposited × (aXiAERO in existence ÷ xiAERO held by the vault). Today that is 1 share per xiAERO.
+**Shares you receive** = xiAERO deposited × (aXiAERO in existence ÷ xiAERO held by the vault). It started at 1 share per xiAERO. Since the first compound on 12 November 2026, each share holds slightly more than 1 xiAERO, so a deposit receives slightly fewer shares than the xiAERO it puts in. The review shows the number before you confirm.
 
 ### Why joining can need USDC
 
